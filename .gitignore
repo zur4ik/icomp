@@ -1,0 +1,40 @@
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore logs and runtime files
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Ignore build output directories
+/build/
+/dist/
+/out/
+/target/
+
+# Ignore dependency directories
+/node_modules/
+/.venv/
+/vendor/
+
+# Ignore IDE/editor configuration files
+.idea/
+/*.iml
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore system files
+*.swp
+*.bak
+*.tmp
+*.orig
+*.rej
+
+# Ignore application-specific files
+.env
+.env.local
+.env.*.local
