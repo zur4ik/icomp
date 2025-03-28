@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.5](https://github.com/zur4ik/icomp/compare/v1.1.4...v1.1.5) (2025-03-28)
+
+
+### Bug Fixes
+
+* adjust table formatting in `README.md` ([e2fa1e9](https://github.com/zur4ik/icomp/commit/e2fa1e966677f571cd49ba909fbf3b862806267e))
+
 ### [1.1.4](https://github.com/zur4ik/icomp/compare/v1.1.3...v1.1.4) (2025-03-28)
 
 ### [1.1.3](https://github.com/zur4ik/icomp/compare/v1.1.2...v1.1.3) (2025-03-28)
