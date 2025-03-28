@@ -7,7 +7,7 @@
   "license": "MIT",
   "type": "module",
   "bin": {
-    "icomp": "./dist/cli.js"
+    "icomp": "dist/cli.js"
   },
   "repository": {
     "type": "git",
