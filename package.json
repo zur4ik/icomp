@@ -37,8 +37,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "version": "standard-version",
-    "pub:check": "npm run build && npm run format && npm publish --dry-run",
-    "publish": "npm publish --access public"
+    "pub:check": "npm run build && npm publish --dry-run",
+    "publish": "git push --follow-tags origin main && npm publish"
   },
   "devDependencies": {
     "@types/express": "^5.0.1",
