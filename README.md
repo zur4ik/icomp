@@ -60,7 +60,7 @@ icomp generate --input ./icons --output ./src/components/icons --watch
 ### Options
 
 | Option          | Description                                                      |
-|-----------------|------------------------------------------------------------------|
+| --------------- | ---------------------------------------------------------------- |
 | `-i` `--input`  | Path to the folder containing SVG files.                         |
 | `-o` `--output` | Path to the folder where the React components will be generated. |
 | `-w` `--watch`  | Watch input dir for changes and auto-generate components.        |
