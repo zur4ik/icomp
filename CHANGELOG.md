@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.7](https://github.com/zur4ik/icomp/compare/v1.1.6...v1.1.7) (2025-03-28)
+
+
+### Bug Fixes
+
+* update default `size` for `IconProps` components ([f6531e3](https://github.com/zur4ik/icomp/commit/f6531e3dba6c6a448f53c7eba29344822005303f))
+
 ### [1.1.6](https://github.com/zur4ik/icomp/compare/v1.1.5...v1.1.6) (2025-03-28)
 
 ### [1.1.5](https://github.com/zur4ik/icomp/compare/v1.1.4...v1.1.5) (2025-03-28)
