@@ -2,7 +2,7 @@
   "name": "icomp",
   "description": "A CLI tool for generating React components from SVG icons.",
   "private": false,
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "Zura Jijavadze",
   "license": "MIT",
   "type": "module",
@@ -36,6 +36,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
+    "version": "standard-version",
     "pub:check": "npm run build && npm run format && npm publish --dry-run",
     "publish": "npm publish --access public"
   },
