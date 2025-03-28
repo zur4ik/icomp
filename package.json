@@ -2,12 +2,15 @@
   "name": "icomp",
   "description": "A CLI tool for generating React components from SVG icons.",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Zura Jijavadze",
   "license": "MIT",
   "type": "module",
   "bin": {
     "icomp": "dist/cli.js"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "repository": {
     "type": "git",
@@ -32,7 +35,9 @@
     "build": "vite build && chmod +x dist/cli.js",
     "preview": "vite preview",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "pub:check": "npm run build && npm run format && npm publish --dry-run",
+    "publish": "npm publish --access public"
   },
   "devDependencies": {
     "@types/express": "^5.0.1",
@@ -40,7 +45,7 @@
     "eslint": "^9.23.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.5",
-    "prettier": "^3.5.3",
+    "standard-version": "^9.5.0",
     "svgo": "^3.3.2",
     "tsx": "^4.19.3",
     "typescript": "~5.7.2",
@@ -52,6 +57,7 @@
     "@svgr/plugin-svgo": "^8.1.0",
     "chokidar": "^4.0.3",
     "commander": "^13.1.0",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "prettier": "^3.5.3"
   }
 }
