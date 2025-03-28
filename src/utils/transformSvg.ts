@@ -45,7 +45,7 @@ export const transformSvg = async (name: string, data: string) => {
             height?: number,
           } 
           
-          const ${componentName} = ({ size = 16, width, height, ...props }: IconProps) => (
+          const ${componentName} = ({ size = 24, width, height, ...props }: IconProps) => (
             ${jsx} 
           )
           
