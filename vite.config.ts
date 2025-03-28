@@ -23,6 +23,7 @@ export default defineConfig({
         "@svgr/core",
         "@svgr/plugin-jsx",
         "@svgr/plugin-svgo",
+        "prettier",
       ],
     },
     target: "node16",

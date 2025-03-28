@@ -1,6 +1,5 @@
 import * as fs from "node:fs"
 import path from "node:path"
-import { optimize } from "svgo"
 import { generateReactComponent, getComponentName } from "./utils"
 
 export const generateIcons = async (
@@ -27,13 +26,10 @@ export const generateIcons = async (
   for (const file of files) {
     const svgPath = path.join(inputPath, file)
     const svgContent = fs.readFileSync(svgPath, "utf-8")
-    const optimized = optimize(svgContent, {
-      multipass: true,
-    })
 
-    if ("data" in optimized) {
+    if (svgContent) {
       const componentName = getComponentName(path.basename(file, ".svg"))
-      const componentContent = await generateReactComponent(componentName, optimized.data)
+      const componentContent = await generateReactComponent(componentName, svgContent)
       const componentPath = path.join(outputPath, `${componentName}.tsx`)
 
       fs.writeFileSync(componentPath, componentContent)

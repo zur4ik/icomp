@@ -1,19 +1,13 @@
 import { transform } from "@svgr/core"
+import prettier from "prettier"
 
 export const generateReactComponent = async (name: string, data: string) => {
-  return await transform(
+  const code = await transform(
     data,
     {
       icon: true,
       typescript: true,
       exportType: "default",
-      prettier: true,
-      prettierConfig: {
-        semi: true,
-        singleQuote: true,
-        tabWidth: 2,
-        useTabs: false,
-      },
       jsxRuntime: "automatic",
       svgProps: { fill: "currentColor", width: "{width || size}", height: "{height || size}" },
       plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
@@ -62,4 +56,12 @@ export const generateReactComponent = async (name: string, data: string) => {
     // state to pass to the template
     { componentName: name },
   )
+
+  return prettier.format(code, {
+    parser: "typescript",
+    semi: false,
+    singleQuote: false,
+    tabWidth: 2,
+    useTabs: false,
+  })
 }
