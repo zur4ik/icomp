@@ -5,11 +5,13 @@ export const toPascalCase = (name: string) => {
 
 // Utility to get component name
 export const getComponentName = (fileName: string): string => {
-  const name = fileName.replace(/\.svg$/, "")
-  if (name.toLowerCase().endsWith("icon")) {
-    return toPascalCase(name)
-  }
-  return toPascalCase(name + "Icon")
+  let name = fileName.replace(/\.svg$/, "")
+
+  // remove "icon" word and all dashes and digits
+  name = name.replace(/icon|[\d\W_]/gi, "")
+
+  // convert to PascalCase
+  return "Icon" + toPascalCase(name)
 }
 
 export { transformSvg } from "./transformSvg.ts"
