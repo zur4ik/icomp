@@ -7,9 +7,7 @@ import { startExplorer } from "../src/explorer/server"
 
 const program = new Command()
 
-program
-  .name("generate-icons")
-  .description("Generate React components from SVG files or explore them")
+program.name("proceed").description("Generate React components from SVG files or explore them")
 
 program
   .command("generate")
