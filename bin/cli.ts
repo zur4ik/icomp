@@ -14,8 +14,12 @@ program
   .requiredOption("-i, --input <path>", "Input folder with SVG files")
   .requiredOption("-o, --output <path>", "Output folder for React components")
   .option("-w, --watch", "Enable watch mode")
-  .action((options) => {
-    generateIcons(path.resolve(options.input), path.resolve(options.output), options.watch ?? false)
+  .action(async (options) => {
+    await generateIcons(
+      path.resolve(options.input),
+      path.resolve(options.output),
+      options.watch ?? false,
+    )
   })
 
 program
