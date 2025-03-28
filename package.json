@@ -1,11 +1,29 @@
 {
   "name": "icomp",
-  "private": true,
-  "version": "0.0.0",
+  "description": "A CLI tool for generating React components from SVG icons.",
+  "private": false,
+  "version": "1.0.0",
   "type": "module",
   "bin": {
     "icomp": "./dist/cli.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zur4ik/icomp.git"
+  },
+  "keywords": [
+    "react",
+    "svg",
+    "icons",
+    "react-components",
+    "component-generator",
+    "svg-to-react",
+    "cli-tool",
+    "open-source"
+  ],
+
+  "author": "Zura Jijavadze",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vite build && chmod +x dist/cli.js",
