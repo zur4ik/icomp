@@ -1,6 +1,7 @@
 import * as fs from "node:fs"
 import path from "node:path"
-import { generateReactComponent, getComponentName } from "./utils"
+import { createComponent, generateIndex } from "./utils"
+import startWatch from "./watcher.ts"
 
 export const generateIcons = async (
   inputPath: string,
@@ -20,31 +21,21 @@ export const generateIcons = async (
 
   // read svg files
   const files = fs.readdirSync(inputPath).filter((file) => file.endsWith(".svg"))
-  const exports: string[] = []
+
+  if (files.length > 0) {
+    console.log("📦 Creating React components from SVG files...")
+  }
 
   // Loop through each file and convert to component
   for (const file of files) {
-    const svgPath = path.join(inputPath, file)
-    const svgContent = fs.readFileSync(svgPath, "utf-8")
-
-    // generate react components
-    if (svgContent) {
-      const componentName = getComponentName(path.basename(file, ".svg"))
-      const componentContent = await generateReactComponent(componentName, svgContent)
-      const componentPath = path.join(outputPath, `${componentName}.tsx`)
-
-      fs.writeFileSync(componentPath, componentContent)
-      exports.push(`export { default as ${componentName} } from "./${componentName}"`)
-      console.log(` - 🧩 Generated: ${componentName}`)
-    }
+    const inputFile = path.join(inputPath, file)
+    await createComponent(inputFile, outputPath)
   }
 
   // Generate index.ts file for all components
-  const indexPath = path.join(outputPath, "index.ts")
-  fs.writeFileSync(indexPath, exports.join("\n"))
-  console.log(` ▶︎ 🔗 Created unified export file for components`)
+  generateIndex(outputPath)
 
   if (watch) {
-    console.log("👀 Watch mode is not yet implemented")
+    startWatch(inputPath, outputPath)
   }
 }

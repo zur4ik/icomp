@@ -1,7 +1,7 @@
 import { transform } from "@svgr/core"
 import prettier from "prettier"
 
-export const generateReactComponent = async (name: string, data: string) => {
+export const transformSvg = async (name: string, data: string) => {
   const code = await transform(
     data,
     {

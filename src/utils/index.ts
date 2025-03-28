@@ -12,4 +12,6 @@ export const getComponentName = (fileName: string): string => {
   return toPascalCase(name + "Icon")
 }
 
-export { generateReactComponent } from "./generateReactComponent.ts"
+export { transformSvg } from "./transformSvg.ts"
+export { createComponent } from "./createComponent.ts"
+export { generateIndex } from "./generateIndex.ts"
