@@ -49,12 +49,18 @@ icomp generate --input ./path/to/svg/folder --output ./path/to/output/folder
 icomp generate --input ./icons --output ./src/components/icons
 ```
 
+### Watch for Changes
+
+```bash
+icomp generate --input ./icons --output ./src/components/icons --watch
+```
+
 ---
 
 ### Options
 
 | Option          | Description                                                      |
-| --------------- | ---------------------------------------------------------------- |
+|-----------------|------------------------------------------------------------------|
 | `-i` `--input`  | Path to the folder containing SVG files.                         |
 | `-o` `--output` | Path to the folder where the React components will be generated. |
 | `-w` `--watch`  | Watch input dir for changes and auto-generate components.        |
@@ -66,7 +72,7 @@ icomp generate --input ./icons --output ./src/components/icons
 ```json
 {
   "scripts": {
-    "gen:icons": "icomp generate --input ./icons --output ./src/components/icons"
+    "gen:icons": "icomp generate -i ./icons -o ./src/components/icons -w"
   }
 }
 ```
