@@ -27,16 +27,24 @@ export const generateIcons = async (
     const svgPath = path.join(inputPath, file)
     const svgContent = fs.readFileSync(svgPath, "utf-8")
 
+    // generate react components
     if (svgContent) {
       const componentName = getComponentName(path.basename(file, ".svg"))
       const componentContent = await generateReactComponent(componentName, svgContent)
       const componentPath = path.join(outputPath, `${componentName}.tsx`)
 
       fs.writeFileSync(componentPath, componentContent)
-      exports.push(`export { default as ${componentName} } from './${componentName}'`)
-      console.log(`✅ Generated: ${componentName}`)
+      exports.push(`export { default as ${componentName} } from "./${componentName}"`)
+      console.log(` - 🧩 Generated: ${componentName}`)
     }
   }
 
-  console.log("Generating icons...", inputPath, outputPath, watch)
+  // Generate index.ts file for all components
+  const indexPath = path.join(outputPath, "index.ts")
+  fs.writeFileSync(indexPath, exports.join("\n"))
+  console.log(` ▶︎ 🔗 Created unified export file for components`)
+
+  if (watch) {
+    console.log("👀 Watch mode is not yet implemented")
+  }
 }
