@@ -31,26 +31,15 @@
     "open-source"
   ],
   "scripts": {
-    "dev": "vite",
-    "build": "vite build && chmod +x dist/cli.js",
-    "preview": "vite preview",
+    "dev": "vite --mode explorer",
+    "build:cli": "vite build && chmod +x dist/cli.js",
+    "build:explorer": "vite build --mode explorer",
+    "preview": "vite preview --mode explorer",
     "lint": "eslint .",
     "format": "prettier --write .",
     "version": "standard-version",
     "pub:check": "npm run build && npm publish --dry-run",
     "publish": "git push --follow-tags origin main && npm publish"
-  },
-  "devDependencies": {
-    "@types/express": "^5.0.1",
-    "@types/node": "^22.13.14",
-    "eslint": "^9.23.0",
-    "eslint-config-prettier": "^10.1.1",
-    "eslint-plugin-prettier": "^5.2.5",
-    "standard-version": "^9.5.0",
-    "svgo": "^3.3.2",
-    "tsx": "^4.19.3",
-    "typescript": "~5.7.2",
-    "vite": "^6.2.0"
   },
   "dependencies": {
     "@svgr/core": "^8.1.0",
@@ -59,6 +48,23 @@
     "chokidar": "^4.0.3",
     "commander": "^13.1.0",
     "express": "^4.21.2",
-    "prettier": "^3.5.3"
+    "prettier": "^3.5.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.13.14",
+    "@types/react": "^19.0.12",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.23.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.5",
+    "standard-version": "^9.5.0",
+    "svgo": "^3.3.2",
+    "tsx": "^4.19.3",
+    "typescript": "~5.7.2",
+    "vite": "^6.2.0"
   }
 }
