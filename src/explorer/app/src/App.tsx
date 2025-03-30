@@ -1,8 +1,8 @@
 const App = () => {
   return (
     <div>
-      <h1>Welcome to the Explorer App</h1>
-      <p>This is a simple React application.</p>
+      <h1>Explorer Module Landing Page</h1>
+      <p>This is a placeholder template where Explorer feature module will be placed later.</p>
     </div>
   )
 }
