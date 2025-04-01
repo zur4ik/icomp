@@ -36,6 +36,7 @@
     "exp:preview": "vite preview --mode explorer",
     "cli:build": "vite build --mode cli && chmod +x dist/cli.js",
     "build": "npm run cli:build && npm run exp:build && chmod +x dist/cli.js",
+    "pack:local": "npm run build && mkdir -p out && npm pack --pack-destination ./out",
     "lint": "eslint .",
     "format": "prettier --write .",
     "version": "standard-version",

@@ -12,5 +12,5 @@ export const generateIndex = (outputPath: string) => {
   })
 
   fs.writeFileSync(path.join(outputPath, "index.ts"), exports.join("\n") + "\n")
-  console.log(`♻️ index.ts generated with ${files.length} exports`)
+  console.log(`♻️ index generated with ${files.length} exports`)
 }
