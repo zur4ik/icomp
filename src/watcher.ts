@@ -1,6 +1,6 @@
 import * as fs from "node:fs"
 import chokidar from "chokidar"
-import { createComponent, generateIndex } from "./utils"
+import { checkSvgFile, createComponent, generateIndex } from "./utils"
 
 const processChange = async (file: string, outputPath: string, type: "add" | "change") => {
   console.log(` - 🏞️ ${type === "add" ? "Added" : "Changed"}: ${file}`)
@@ -24,9 +24,12 @@ const startWatch = (inputPath: string, outputPath: string) => {
 
   watcher
     .on("add", async (file) => {
+      // check if file is svg
+      checkSvgFile(file)
       await processChange(file, outputPath, "add")
     })
     .on("change", async (file) => {
+      checkSvgFile(file)
       await processChange(file, outputPath, "change")
     })
 }
