@@ -7,11 +7,17 @@ export const toPascalCase = (name: string) => {
 export const getComponentName = (fileName: string): string => {
   let name = fileName.replace(/\.svg$/, "")
 
-  // remove "icon" word and all dashes and digits
-  name = name.replace(/icon|[\d\W_]/gi, "")
+  // Remove 'icon' word (optional, if your files have icon-gear.svg etc.)
+  name = name.replace(/^icon[-_]?/i, "")
+
+  // Split by non-alphanumeric separators like '-', '_', etc.
+  const parts = name.split(/[-_]+/)
+
+  // Convert to PascalCase
+  const pascal = parts.map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join("")
 
   // convert to PascalCase
-  return "Icon" + toPascalCase(name)
+  return "Icon" + pascal
 }
 
 export const checkSvgFile = (file: string) => {
