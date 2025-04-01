@@ -1,5 +1,11 @@
 import { transform } from "@svgr/core"
 import prettier from "prettier"
+import {
+  addFillToPreConverted,
+  adjustPathStroke,
+  groupAllPaths,
+  markConvertibleElements,
+} from "../plugins"
 
 export const transformSvg = async (name: string, data: string) => {
   const code = await transform(
@@ -16,6 +22,21 @@ export const transformSvg = async (name: string, data: string) => {
       svgoConfig: {
         plugins: [
           {
+            name: "inlineStyles",
+            params: {
+              onlyMatchedOnce: false,
+              removeMatchedSelectors: true,
+            },
+          },
+          "convertStyleToAttrs",
+          markConvertibleElements,
+          {
+            name: "convertShapeToPath",
+            params: {
+              convertArcs: true,
+            },
+          },
+          {
             name: "removeAttrs",
             params: {
               attrs: "(fill)",
@@ -27,6 +48,9 @@ export const transformSvg = async (name: string, data: string) => {
               attributes: [{ fill: "currentColor" }],
             },
           },
+          groupAllPaths,
+          adjustPathStroke,
+          addFillToPreConverted,
         ],
       },
 

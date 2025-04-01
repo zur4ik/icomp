@@ -1,0 +1,5 @@
+export { default as markConvertibleElements } from "./markConvertibleElements"
+export { default as groupConvertedPaths } from "./groupConvertedPaths"
+export { default as groupAllPaths } from "./groupAllPaths"
+export { default as adjustPathStroke } from "./adjustPathStroke"
+export { default as addFillToPreConverted } from "./addFillToPreConverted"
