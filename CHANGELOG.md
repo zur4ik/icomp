@@ -4,19 +4,17 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [1.1.7](https://github.com/zur4ik/icomp/compare/v1.1.6...v1.1.7) (2025-03-28)
 
-
 ### Bug Fixes
 
-* update default `size` for `IconProps` components ([f6531e3](https://github.com/zur4ik/icomp/commit/f6531e3dba6c6a448f53c7eba29344822005303f))
+- update default `size` for `IconProps` components ([f6531e3](https://github.com/zur4ik/icomp/commit/f6531e3dba6c6a448f53c7eba29344822005303f))
 
 ### [1.1.6](https://github.com/zur4ik/icomp/compare/v1.1.5...v1.1.6) (2025-03-28)
 
 ### [1.1.5](https://github.com/zur4ik/icomp/compare/v1.1.4...v1.1.5) (2025-03-28)
 
-
 ### Bug Fixes
 
-* adjust table formatting in `README.md` ([e2fa1e9](https://github.com/zur4ik/icomp/commit/e2fa1e966677f571cd49ba909fbf3b862806267e))
+- adjust table formatting in `README.md` ([e2fa1e9](https://github.com/zur4ik/icomp/commit/e2fa1e966677f571cd49ba909fbf3b862806267e))
 
 ### [1.1.4](https://github.com/zur4ik/icomp/compare/v1.1.3...v1.1.4) (2025-03-28)
 
