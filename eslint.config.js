@@ -7,6 +7,7 @@ import prettier from "eslint-plugin-prettier"
 export default [
   {
     files: ["**/*.{ts,tsx}"],
+    ignores: ["src/com/icons/**/*"],
     languageOptions: {
       parser: tsParser,
       parserOptions: {

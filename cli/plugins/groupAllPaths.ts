@@ -1,14 +1,15 @@
-export const groupAllPaths = {
-  name: "groupAllPaths",
-  description: "Group all consecutive <path> elements into a <g> element",
+import type { CustomPlugin } from "svgo"
+import type { XastElement } from "svgo/lib/types"
 
+export const groupAllPaths: CustomPlugin = {
+  name: "groupAllPaths",
   fn: () => ({
     element: {
-      exit(node: any) {
+      exit(node) {
         if (node.name === "g" || !node.children || node.children.length === 0) return
 
         const newChildren = []
-        let buffer: any[] = []
+        let buffer: XastElement[] = []
 
         const flushGroup = () => {
           if (buffer.length > 0) {

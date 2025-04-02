@@ -1,10 +1,10 @@
-export const adjustPathStroke = {
-  name: "adjustPathStroke",
-  description: "Change stroke to currentColor and add fill='none' on paths with stroke",
+import type { CustomPlugin } from "svgo"
 
+export const adjustPathStroke: CustomPlugin = {
+  name: "adjustPathStroke",
   fn: () => ({
     element: {
-      enter(node: any) {
+      enter(node) {
         if (node.type !== "element" || node.name !== "path") return
 
         if (node.attributes?.stroke) {

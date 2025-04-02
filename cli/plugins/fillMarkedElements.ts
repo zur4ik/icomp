@@ -1,10 +1,10 @@
-export const fillMarkedElements = {
-  name: "addFillToPreConverted",
-  description: "Add fill='none' to elements marked with data-pre-convert",
+import type { CustomPlugin } from "svgo"
 
+export const fillMarkedElements: CustomPlugin = {
+  name: "addFillToPreConverted",
   fn: () => ({
     element: {
-      enter(node: any) {
+      enter(node) {
         if (node.type !== "element") return
 
         if (node.attributes?.["data-pre-convert"]) {
