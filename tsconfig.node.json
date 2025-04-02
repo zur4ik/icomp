@@ -3,7 +3,9 @@
   "compilerOptions": {
     "outDir": "dist",
     "target": "ES2020",
-    "jsx": "preserve"
+    "module": "ESNext",
+    "declaration": true,
   },
-  "include": ["src", "bin"]
+  "include": ["bin", "src/**/*.ts"],
+  "exclude": ["src/explorer/**/*"]
 }

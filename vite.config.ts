@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     root: isExplorer ? path.resolve(__dirname, "src/explorer/app") : __dirname,
-    plugins: [react()],
+    plugins: isExplorer ? [react()] : [],
     build: {
       outDir: isExplorer
         ? path.resolve(__dirname, "dist/explorer")
@@ -26,16 +26,21 @@ export default defineConfig(({ mode }) => {
               chunkFileNames: "[name].js",
               assetFileNames: "[name].[ext]",
             },
+            treeshake: {
+              moduleSideEffects: (id) => {
+                return !id.includes("src/explorer")
+              },
+            },
             external: [
+              /^node:/,
+              /^vite$/,
+              /^@svgr\//,
+              /^eslint/,
               "commander",
               "chokidar",
               "svgo",
               "express",
-              "node:path",
-              "node:fs",
-              "@svgr/core",
-              "@svgr/plugin-jsx",
-              "@svgr/plugin-svgo",
+              "vite",
               "prettier",
             ],
           },

@@ -8,7 +8,10 @@ export const getComponentName = (fileName: string): string => {
   let name = fileName.replace(/\.svg$/, "")
 
   // Remove 'icon' word (optional, if your files have icon-gear.svg etc.)
-  name = name.replace(/^icon[-_]?/i, "")
+  name = name.replace(/icon[-_]?/i, "")
+
+  // replace whitespace with '-'
+  name = name.replace(/\s+/g, "-")
 
   // Split by non-alphanumeric separators like '-', '_', etc.
   const parts = name.split(/[-_]+/)

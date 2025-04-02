@@ -31,9 +31,9 @@
     "open-source"
   ],
   "scripts": {
-    "exp:dev": "vite --mode explorer",
     "exp:build": "vite build --mode explorer",
     "exp:preview": "vite preview --mode explorer",
+    "exp:run": "tsx bin/cli.ts explorer -i ~/IdeaProjects/demos/icomp-test/src/com/icons",
     "cli:build": "vite build --mode cli && chmod +x dist/cli.js",
     "build": "npm run cli:build && npm run exp:build && chmod +x dist/cli.js",
     "pack:local": "npm run build && mkdir -p out && npm pack --pack-destination ./out",

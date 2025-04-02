@@ -24,10 +24,10 @@ program
 
 program
   .command("explorer")
-  .requiredOption("--icons <path>", "Input folder with SVG files")
+  .requiredOption("-i, --icons <path>", "Input folder with Generated React components")
   .option("--port <number>", "Port to run explorer on", "3000")
-  .action((options) => {
-    startExplorer(path.resolve(options.icons), Number(options.port))
+  .action(async (options) => {
+    await startExplorer(path.resolve(options.icons), Number(options.port))
   })
 
 program.parse()

@@ -25,11 +25,11 @@ const startWatch = (inputPath: string, outputPath: string) => {
   watcher
     .on("add", async (file) => {
       // check if file is svg
-      checkSvgFile(file)
+      if (!checkSvgFile(file)) return
       await processChange(file, outputPath, "add")
     })
     .on("change", async (file) => {
-      checkSvgFile(file)
+      if (!checkSvgFile(file)) return
       await processChange(file, outputPath, "change")
     })
 }
