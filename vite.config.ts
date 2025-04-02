@@ -1,61 +1,19 @@
-import { defineConfig } from "vite"
-import { resolve } from "path"
-import path from "node:path"
-import react from "@vitejs/plugin-react"
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'node:path';
 
-export default defineConfig(({ mode }) => {
-  const isExplorer = mode === "explorer"
+console.log('root:', path.resolve(__dirname, 'src'));
 
-  return {
-    root: isExplorer ? path.resolve(__dirname, "src/explorer/app") : __dirname,
-    plugins: isExplorer ? [react()] : [],
-    build: {
-      outDir: isExplorer
-        ? path.resolve(__dirname, "dist/explorer")
-        : path.resolve(__dirname, "dist"),
-      emptyOutDir: true,
-      target: isExplorer ? undefined : "node18",
-      rollupOptions: isExplorer
-        ? {}
-        : {
-            input: {
-              cli: resolve(__dirname, "bin/cli.ts"),
-            },
-            output: {
-              entryFileNames: "[name].js",
-              chunkFileNames: "[name].js",
-              assetFileNames: "[name].[ext]",
-            },
-            treeshake: {
-              moduleSideEffects: (id) => {
-                return !id.includes("src/explorer")
-              },
-            },
-            external: [
-              /^node:/,
-              /^vite$/,
-              /^@svgr\//,
-              /^eslint/,
-              "commander",
-              "chokidar",
-              "svgo",
-              "express",
-              "vite",
-              "prettier",
-              "esbuild",
-            ],
-          },
+export default defineConfig({
+  plugins: [react()],
+  root: "src",
+  resolve: {
+    alias: {
+      '@shared': path.resolve(__dirname, 'shared'),
     },
-    resolve: {
-      alias: {
-        "@exp": path.resolve(__dirname, "src/explorer/app/src"),
-        "@css": (() => {
-          const aliasPath = path.resolve(__dirname, "src/explorer/app/src/assets/css")
-          console.log("Alias @css points to:", aliasPath)
-          return aliasPath
-        })(),
-        "@com": path.resolve(__dirname, "src/explorer/app/src/com"),
-      },
-    },
-  }
-})
+  },
+  build: {
+    outDir: 'dist/web',
+    emptyOutDir: true,
+  },
+});
