@@ -6,7 +6,8 @@
     "module": "ESNext",
     "target": "ES2020",
     "noEmit": false,
-    "rootDir": "."
+    "rootDir": ".",
+    "resolveJsonModule": true
   },
-  "include": ["cli", "bin", "shared"]
+  "include": ["cli", "shared"]
 }
