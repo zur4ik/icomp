@@ -42,12 +42,14 @@ export default defineConfig(({ mode }) => {
               "express",
               "vite",
               "prettier",
+              "esbuild",
             ],
           },
     },
     resolve: {
       alias: {
         "@exp": path.resolve(__dirname, "src/explorer/app/src"),
+        "@com": path.resolve(__dirname, "src/explorer/app/src/com"),
       },
     },
   }

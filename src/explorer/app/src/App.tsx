@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react"
+import Icon from "./com/Icon.tsx"
 
 const App = () => {
   const [icons, setIcons] = useState<string[]>([])
@@ -19,7 +20,7 @@ const App = () => {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1>Icon Explorer</h1>
+      <h1>iComp Icon Explorer</h1>
       <div
         style={{
           display: "grid",
@@ -28,15 +29,12 @@ const App = () => {
         }}
       >
         {icons.map((name) => (
-          <div
-            key={`icon-${name}`}
-            style={{ display: "flex", alignItems: "center", flexFlow: "column" }}
-          >
-            <img src={`/icons/${name}`} alt={name} width={48} height={48} />
-            <p>{name.replace(".svg", "")}</p>
-          </div>
+          <Icon name={name} />
         ))}
       </div>
+      <button onClick={() => fetch("/generate", { method: "POST" })}>
+        Generate React Components
+      </button>
     </div>
   )
 }
