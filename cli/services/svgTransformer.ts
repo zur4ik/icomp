@@ -6,6 +6,7 @@ import {
   markConvertibleElements,
 } from "@plugins"
 import prettier from "prettier"
+import { iconTemplate } from "../templates/iconTemplate"
 
 export const transformSvg = async (name: string, data: string) => {
   const code = await transform(
@@ -55,27 +56,7 @@ export const transformSvg = async (name: string, data: string) => {
       },
 
       // template for the component
-      template: ({ imports, interfaces, componentName, exports, jsx }, { tpl }) => {
-        // console.log("variables: ", variables)
-        // console.log("template: ", template)
-
-        return tpl`
-          ${imports}
-          ${interfaces}
-          
-          interface IconProps extends SVGProps<SVGSVGElement> {
-            size?: number
-            width?: number
-            height?: number,
-          } 
-          
-          const ${componentName} = ({ size = 24, width, height, ...props }: IconProps) => (
-            ${jsx} 
-          )
-          
-          ${exports}
-        `
-      },
+      template: iconTemplate,
     },
     // state to pass to the template
     { componentName: name },
