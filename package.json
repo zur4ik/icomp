@@ -18,7 +18,8 @@
   },
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "!dist/cli/.cache"
   ],
   "keywords": [
     "react",
@@ -39,12 +40,18 @@
     "format": "prettier --write .",
     "lint": "eslint . --ext .ts,.tsx",
     "pack:local": "npm run build && npm run cli:build && mkdir -p out && npm pack --pack-destination ./out",
+    "test:pack": "npm run build && npm run cli:build && npm publish --dry-run",
     "icomp:link": "npm run cli:build && npm link",
     "icomp:test": "icomp generate -i ./.assets -o ./src/com/icons"
   },
   "dependencies": {
+    "@svgr/core": "^8.1.0",
+    "@svgr/plugin-jsx": "^8.1.0",
+    "@svgr/plugin-svgo": "^8.1.0",
     "commander": "^11.0.0",
+    "esbuild": "^0.25.2",
     "express": "^4.18.2",
+    "prettier": "^3.5.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
@@ -64,7 +71,6 @@
     "eslint": "^9.23.0",
     "eslint-plugin-prettier": "^5.2.5",
     "eslint-plugin-react": "^7.37.4",
-    "prettier": "^3.5.3",
     "rollup": "^4.39.0",
     "rollup-plugin-delete": "^3.0.1",
     "tsx": "^4.7.0",

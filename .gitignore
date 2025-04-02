@@ -25,3 +25,4 @@ out
 *.sln
 *.sw?
 /.assets/
+/src/com/icons/
