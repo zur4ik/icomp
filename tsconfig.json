@@ -11,5 +11,8 @@
     "skipLibCheck": true,
     "allowImportingTsExtensions": false
   },
-  "include": ["src", "shared"]
+  "include": ["src", "shared"],
+  "references": [
+    { "path": "./tsconfig.cli.json" },
+  ]
 }

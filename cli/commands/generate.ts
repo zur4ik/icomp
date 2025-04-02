@@ -1,6 +1,7 @@
 import fs from "node:fs"
 import path from "node:path"
 import { version } from "../../package.json"
+import { createComponent } from "../services/componentGenerator"
 
 export const generate = async (inputPath: string, outputPath: string, watch: boolean = false) => {
   // display current version off package
@@ -27,8 +28,7 @@ export const generate = async (inputPath: string, outputPath: string, watch: boo
   // Loop through each file and convert to component
   for (const file of files) {
     const inputFile = path.join(inputPath, file)
-    console.log(`Processing file: ${inputFile}`)
-    // await createComponent(inputFile, outputPath)
+    await createComponent(inputFile, outputPath)
   }
 
   // Generate index.ts file for all components
