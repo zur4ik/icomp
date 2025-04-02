@@ -1,7 +1,7 @@
 import fs from "node:fs"
 import path from "node:path"
 import { version } from "../../package.json"
-import { createComponent } from "../services/componentGenerator"
+import { createComponent } from "@services/componentGenerator"
 
 export const generate = async (inputPath: string, outputPath: string, watch: boolean = false) => {
   // display current version off package
