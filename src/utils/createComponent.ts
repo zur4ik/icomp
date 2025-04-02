@@ -1,6 +1,7 @@
 import fs from "node:fs"
-import { getComponentName, transformSvg } from "./index.ts"
+import { transformSvg } from "./index.ts"
 import path from "node:path"
+import { getComponentName } from "../shared"
 
 export const createComponent = async (inputFile: string, outputPath: string): Promise<string> => {
   const svgContent = fs.readFileSync(inputFile, "utf-8")

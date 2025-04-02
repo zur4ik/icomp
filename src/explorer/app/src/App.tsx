@@ -1,28 +1,16 @@
-import { type ComponentType, useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 
-interface ComponentEntry {
-  name: string
-  Component: ComponentType
-}
 const App = () => {
-  const [icons, setIcons] = useState<ComponentEntry[]>([])
+  const [icons, setIcons] = useState<string[]>([])
 
   const loadIcons = useCallback(async () => {
     // 1. get the components directory from the server
-    const res = await fetch("/components")
-    const { componentsDir } = await res.json()
+    const res = await fetch("/icons")
+    const icons = await res.json()
 
-    // 2. import CLI generated index from components dir
-    const iconsModule = await import(/* @vite-ignore */ `${componentsDir}/index.ts`)
-
-    // Step 3: turn module into an array
-    const loaded: ComponentEntry[] = Object.entries(iconsModule).map(([name, Component]) => ({
-      name,
-      Component: Component as React.ComponentType,
-    }))
-    setIcons(loaded)
-
-    console.log("iconsModule", loaded)
+    if (Array.isArray(icons)) {
+      setIcons(icons)
+    }
   }, [])
 
   useEffect(() => {
@@ -36,13 +24,16 @@ const App = () => {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill, minmax(80px, 1fr))",
-          gap: "10px",
+          gap: "32px",
         }}
       >
-        {icons.map((icon) => (
-          <div key={icon.name} style={{ textAlign: "center" }}>
-            <icon.Component />
-            <div style={{ fontSize: "12px" }}>{icon.name}</div>
+        {icons.map((name) => (
+          <div
+            key={`icon-${name}`}
+            style={{ display: "flex", alignItems: "center", flexFlow: "column" }}
+          >
+            <img src={`/icons/${name}`} alt={name} width={48} height={48} />
+            <p>{name.replace(".svg", "")}</p>
           </div>
         ))}
       </div>
