@@ -34,7 +34,8 @@
     "dev": "vite",
     "build": "vite build",
     "cli:dev": "tsx ./bin/cli.ts",
-    "cli:build": "tsc --project tsconfig.cli.json"
+    "cli:build": "tsc --project tsconfig.cli.json",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "commander": "^11.0.0",
