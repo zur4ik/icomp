@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react"
 import Icon from "./com/Icon.tsx"
+import "./assets/css/main.css"
 
 const App = () => {
   const [icons, setIcons] = useState<string[]>([])
@@ -15,12 +16,12 @@ const App = () => {
   }, [])
 
   useEffect(() => {
-    loadIcons().then((_) => {})
+    loadIcons().finally()
   }, [])
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1>iComp Icon Explorer</h1>
+      <h1>{"{iComp}"} Icon Explorer</h1>
       <div
         style={{
           display: "grid",

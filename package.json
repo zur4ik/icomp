@@ -34,6 +34,7 @@
     "exp:build": "vite build --mode explorer",
     "exp:preview": "vite preview --mode explorer",
     "exp:run": "NODE_ENV=development tsx bin/cli.ts explorer -i ~/IdeaProjects/demos/icomp-test/.icons -o ~/IdeaProjects/demos/icomp-test/src/com/icons",
+    "exp:vite:dev": "vite dev --mode explorer",
     "cli:build": "vite build --mode cli && chmod +x dist/cli.js",
     "build": "npm run cli:build && npm run exp:build && chmod +x dist/cli.js",
     "pack:local": "npm run build && mkdir -p out && npm pack --pack-destination ./out",

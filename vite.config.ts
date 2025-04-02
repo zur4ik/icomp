@@ -49,6 +49,11 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         "@exp": path.resolve(__dirname, "src/explorer/app/src"),
+        "@css": (() => {
+          const aliasPath = path.resolve(__dirname, "src/explorer/app/src/assets/css")
+          console.log("Alias @css points to:", aliasPath)
+          return aliasPath
+        })(),
         "@com": path.resolve(__dirname, "src/explorer/app/src/com"),
       },
     },
