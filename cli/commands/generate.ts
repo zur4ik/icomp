@@ -3,6 +3,7 @@ import path from "node:path"
 import { version } from "../../package.json"
 import { createComponent } from "@services/componentGenerator"
 import { generateIndex } from "@services/indexGenerator"
+import { startWatcher } from "@services/fileWatcher"
 
 export const generate = async (inputPath: string, outputPath: string, watch: boolean = false) => {
   // display current version off package
@@ -32,10 +33,11 @@ export const generate = async (inputPath: string, outputPath: string, watch: boo
     await createComponent(inputFile, outputPath)
   }
 
-  // Generate index.ts file for all components
+  // Generate index file for all components
   generateIndex(outputPath)
 
+  // start watcher if watch flag provided
   if (watch) {
-    // startWatch(inputPath, outputPath)
+    startWatcher(inputPath, outputPath)
   }
 }

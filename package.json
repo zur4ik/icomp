@@ -48,6 +48,7 @@
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
     "@svgr/plugin-svgo": "^8.1.0",
+    "chokidar": "^4.0.3",
     "commander": "^11.0.0",
     "esbuild": "^0.25.2",
     "express": "^4.18.2",
