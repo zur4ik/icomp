@@ -8,7 +8,7 @@
       "@services": ["./cli/services"],
       "@services/*": ["./cli/services/*"],
       "@plugins": ["./cli/plugins"],
-      "@plugins/*": ["./cli/plugins/*"],
+      "@plugins/*": ["./cli/plugins/*"]
     },
     "outDir": "dist/cli",
     "moduleResolution": "node",
@@ -16,7 +16,7 @@
     "target": "ES2020",
     "noEmit": false,
     "rootDir": ".",
-    "resolveJsonModule": true,
+    "resolveJsonModule": true
   },
   "include": ["cli", "shared"]
 }
