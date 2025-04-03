@@ -10,7 +10,15 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "allowImportingTsExtensions": false,
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": true,
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["./*"],
+      "@css/*": ["assets/css/*"],
+      "@com/*": ["com/*"],
+      "@shared/*": ["../shared/*"],
+      "@services/*": ["services/*"],
+    },
   },
   "include": ["src", "shared"],
   "references": [{ "path": "./tsconfig.cli.json" }]

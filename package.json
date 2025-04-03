@@ -49,13 +49,15 @@
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
     "@svgr/plugin-svgo": "^8.1.0",
+    "@tailwindcss/vite": "^4.1.2",
     "chokidar": "^4.0.3",
     "commander": "^11.0.0",
     "esbuild": "^0.25.2",
     "express": "^4.18.2",
     "prettier": "^3.5.3",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.2"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.3",

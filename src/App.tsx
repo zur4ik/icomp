@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import type { IconInfo } from "../shared/types"
-import fetchIcons from "./services/fetchIcons"
-import { Icon } from "./com/Icon"
+import type { IconInfo } from "@shared/types"
+import { Icon } from "@com/Icon"
+import fetchIcons from "@services/fetchIcons"
 
 const App = () => {
   const size = 24
