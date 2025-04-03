@@ -3,7 +3,7 @@ import fs from "node:fs"
 import { getComponentName } from "@shared"
 import { transformSvg } from "@services/svgTransformer"
 import { transformSync } from "esbuild"
-import { cachePath } from "../paths"
+import { CACHE_PATH } from "../paths"
 
 export const createComponent = async (inputFile: string, outputPath: string): Promise<string> => {
   const fileName = path.basename(inputFile, ".svg")
@@ -18,8 +18,8 @@ export const createComponent = async (inputFile: string, outputPath: string): Pr
     fs.writeFileSync(componentPath, componentContent)
 
     // check/create cache dir
-    if (!fs.existsSync(cachePath)) {
-      fs.mkdirSync(cachePath, { recursive: true })
+    if (!fs.existsSync(CACHE_PATH)) {
+      fs.mkdirSync(CACHE_PATH, { recursive: true })
     }
 
     // compile to ESM JS:
@@ -30,7 +30,7 @@ export const createComponent = async (inputFile: string, outputPath: string): Pr
     })
 
     // cache compiled js component
-    fs.writeFileSync(path.resolve(cachePath, `${componentName}.js`), cachedComponent.code)
+    fs.writeFileSync(path.resolve(CACHE_PATH, `${componentName}.js`), cachedComponent.code)
 
     console.log(` - 🧩 Created: ${componentName}`)
     return componentName
