@@ -1,6 +1,4 @@
 export { adjustColors } from "./adjustColors"
 export { adjustPathStroke } from "./adjustPathStroke"
-export { fillMarkedElements } from "./fillMarkedElements"
 export { groupAllPaths } from "./groupAllPaths"
-export { markConvertibleElements } from "./markConvertibleElements"
 export { cleanSvg } from "./cleanSvg"
