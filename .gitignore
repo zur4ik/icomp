@@ -26,3 +26,4 @@ out
 *.sw?
 /.assets/
 /src/com/icons/
+/cli/.cache/

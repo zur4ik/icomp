@@ -35,7 +35,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "cli:dev": "tsx ./cli/index.ts generate -i .assets -o src/com/icons",
+    "cli:dev": "tsx --tsconfig ./tsconfig.cli.json ./cli/index.ts generate -i .assets -o src/com/icons",
     "cli:build": "rollup -c && chmod +x ./dist/cli/cli.cjs",
     "format": "prettier --write .",
     "lint": "eslint .",

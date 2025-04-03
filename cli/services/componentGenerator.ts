@@ -3,11 +3,11 @@ import fs from "node:fs"
 import { getComponentName } from "@shared"
 import { transformSvg } from "@services/svgTransformer"
 import { transformSync } from "esbuild"
+import { cachePath } from "../paths"
 
 export const createComponent = async (inputFile: string, outputPath: string): Promise<string> => {
   const fileName = path.basename(inputFile, ".svg")
   const svgContent = fs.readFileSync(inputFile, "utf-8")
-  const cachePath = path.resolve(__dirname, ".cache")
 
   if (svgContent) {
     const componentName = getComponentName(fileName)
