@@ -1,7 +1,9 @@
 import express from "express"
-import fs from "node:fs"
+import { DEFAULT_HOST } from "@services/constants"
+import getIcons from "./services/getIcons"
+import type { IconMeta } from "@services/types"
 
-export function startServer(inputPath: string, port: number) {
+export function startServer(inputPath: string, outputPath: string, port: number) {
   const app = express()
 
   // serve static files from the input path
@@ -9,11 +11,11 @@ export function startServer(inputPath: string, port: number) {
 
   // service to get the list of icons
   app.get("/api/icons", (req, res) => {
-    const files = fs.readdirSync(inputPath).filter((file) => file.endsWith(".svg"))
-    res.json(files)
+    const icons: IconMeta[] = getIcons(inputPath)
+    res.json(icons)
   })
 
-  app.listen(port, "localhost", () => {
+  app.listen(port, DEFAULT_HOST, () => {
     console.log(`🚀 icomp explorer started on http://localhost:${port}`)
   })
 }
