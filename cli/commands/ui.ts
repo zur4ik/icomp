@@ -2,7 +2,7 @@ import { startServer } from "../server"
 import { findPort } from "@services/portChecker"
 import fs from "node:fs"
 
-export const explorer = async (inputPath: string, outputPath: string, port: number | undefined) => {
+export const ui = async (inputPath: string, outputPath: string, port: number | undefined) => {
   const staticPort = typeof port === "number" && !isNaN(port) && port > 1024
 
   // check if input dir exists

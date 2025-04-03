@@ -37,15 +37,16 @@
     "preview": "vite preview",
     "cli:dev": "tsx --tsconfig ./tsconfig.cli.json ./cli/index.ts generate -i .assets -o src/com/icons",
     "cli:build": "rollup -c && chmod +x ./dist/cli/cli.cjs",
-    "exp:dev": "tsx --tsconfig ./tsconfig.cli.json ./cli/index.ts explorer -i .assets -o src/com/icons",
+    "exp:dev": "tsx --tsconfig ./tsconfig.cli.json ./cli/index.ts ui -i .assets -o src/com/icons",
 
 
     "format": "prettier --write .",
     "lint": "eslint .",
     "pack:local": "npm run build && npm run cli:build && mkdir -p out && npm pack --pack-destination ./out",
     "test:pack": "npm run build && npm run cli:build && npm publish --dry-run",
-    "icomp:link": "npm run cli:build && npm link",
-    "icomp:test": "icomp generate -i ./.assets -o ./src/com/icons"
+    "pack:link": "npm run build && npm run cli:build && npm link",
+    "pack:gen": "icomp generate -i ./.assets -o ./src/com/icons",
+    "pack:exp": "icomp explorer -i ./.assets -o ./src/com/icons"
   },
   "dependencies": {
     "@svgr/core": "^8.1.0",

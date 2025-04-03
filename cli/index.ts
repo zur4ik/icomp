@@ -1,6 +1,6 @@
 import { program } from "commander"
 import path from "node:path"
-import { explorer, generate } from "./commands"
+import { ui, generate } from "./commands"
 
 // Generate command
 program
@@ -18,16 +18,12 @@ program
 
 // Explorer command
 program
-  .command("explorer")
+  .command("ui")
   .requiredOption("-i, --input <path>", "Input folder with SVG files")
   .requiredOption("-o, --output <path>", "Output folder for React components")
   .option("-p, --port <path>", "Optional port for the explorer. Default: 5001")
   .action(async (options) => {
-    await explorer(
-      path.resolve(options.input),
-      path.resolve(options.output),
-      parseInt(options.port),
-    )
+    await ui(path.resolve(options.input), path.resolve(options.output), parseInt(options.port))
   })
 
 program.parse()

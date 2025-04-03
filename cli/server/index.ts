@@ -28,7 +28,7 @@ export function startServer(inputPath: string, outputPath: string, port: number)
   })
 
   app.listen(port, DEFAULT_HOST, () => {
-    console.log(`🚀 icomp explorer started on http://localhost:${port}`)
+    console.log(`🚀 icomp [ui mode] started on http://localhost:${port}`)
   })
 }
 

@@ -7,7 +7,7 @@ import { startWatcher } from "@services/fileWatcher"
 
 export const generate = async (inputPath: string, outputPath: string, watch: boolean = false) => {
   // display current version off package
-  console.log(`📦 Package (icomp) v${version}`)
+  console.log(`📦 icomp (cli mode) v${version}`)
 
   // Check if the input path exists
   if (!fs.existsSync(inputPath)) {
