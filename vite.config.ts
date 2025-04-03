@@ -1,16 +1,30 @@
 import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react"
 import path from "node:path"
+import pkg from "./package.json"
+import { createHtmlPlugin } from "vite-plugin-html"
 
 const SERVER_URL = process.env.SERVER_URL || "http://localhost:5001"
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    createHtmlPlugin({
+      inject: {
+        data: {
+          version: pkg.version,
+        },
+      },
+    }),
+  ],
   root: "src",
   resolve: {
     alias: {
       "@shared": path.resolve(__dirname, "shared"),
     },
+  },
+  define: {
+    __APP_VERSION__: JSON.stringify(pkg.version),
   },
   server: {
     proxy: {
