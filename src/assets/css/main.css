@@ -1,1 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 @import "tailwindcss";
+
+@theme {
+    --spacing: 1px;
+    --font-roboto: "Roboto", sans-serif;
+    --text-xxs: 10px;
+}
+
+body {
+    @apply font-roboto select-none;
+}

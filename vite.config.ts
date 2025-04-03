@@ -26,6 +26,7 @@ export default defineConfig({
       "@css": path.resolve(__dirname, "src/assets/css"),
       "@com": path.resolve(__dirname, "src/com"),
       "@services": path.resolve(__dirname, "src/services"),
+      "@root": path.resolve(__dirname, "."),
     },
   },
   define: {

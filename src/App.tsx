@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import type { IconInfo } from "@shared/types"
 import { Icon } from "@com/Icon"
 import fetchIcons from "@services/fetchIcons"
+import { Header } from "@com/Header"
 
 const App = () => {
   const size = 24
@@ -12,7 +13,8 @@ const App = () => {
   }, [])
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div>
+      <Header />
       <h1>Icon Explorer</h1>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, 80px)", gap: "10px" }}>
         {icons.map((icon) => (
