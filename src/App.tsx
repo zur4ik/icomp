@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import type { IconInfo } from "../shared/types"
 import fetchIcons from "./services/fetchIcons"
+import { Icon } from "./com/Icon"
 
 const App = () => {
   const size = 24
@@ -15,13 +16,7 @@ const App = () => {
       <h1>Icon Explorer</h1>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, 80px)", gap: "10px" }}>
         {icons.map((icon) => (
-          <div
-            key={icon.name}
-            style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-          >
-            <img src={`/icon/${icon.file}`} alt={icon.name} width={size} height={size} />
-            <small>{icon.name}</small>
-          </div>
+          <Icon icon={icon} size={size} key={icon.name} />
         ))}
       </div>
     </div>
