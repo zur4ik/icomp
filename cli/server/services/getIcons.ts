@@ -2,9 +2,9 @@ import fs from "node:fs"
 import { getComponentName, getIconName } from "@shared"
 import { cliRoot } from "../../paths"
 import path from "node:path"
-import type { IconMeta } from "@services/types"
+import type { IconInfo } from "@shared/types"
 
-const getIcons = (inputPath: string): IconMeta[] => {
+const getIcons = (inputPath: string): IconInfo[] => {
   const files = fs.readdirSync(inputPath).filter((file) => file.endsWith(".svg"))
 
   return files.map((file) => {

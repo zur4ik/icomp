@@ -1,7 +1,7 @@
 import express from "express"
 import { DEFAULT_HOST } from "@services/constants"
 import getIcons from "./services/getIcons"
-import type { IconMeta } from "@services/types"
+import type { IconInfo } from "@shared/types"
 
 export function startServer(inputPath: string, outputPath: string, port: number) {
   const app = express()
@@ -11,7 +11,7 @@ export function startServer(inputPath: string, outputPath: string, port: number)
 
   // service to get the list of icons
   app.get("/api/icons", (req, res) => {
-    const icons: IconMeta[] = getIcons(inputPath)
+    const icons: IconInfo[] = getIcons(inputPath)
     res.json(icons)
   })
 

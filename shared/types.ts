@@ -1,4 +1,4 @@
-export interface IconMeta {
+export interface IconInfo {
   name: string
   component: string
   file: string
