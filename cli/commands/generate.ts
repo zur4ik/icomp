@@ -18,6 +18,10 @@ export const generate = async (inputPath: string, outputPath: string, watch: boo
   // Check if the output path exists, if not create it
   if (!fs.existsSync(outputPath)) {
     fs.mkdirSync(outputPath, { recursive: true })
+  } else {
+    // re-create empty output path
+    fs.rmSync(outputPath, { recursive: true, force: true })
+    fs.mkdirSync(outputPath, { recursive: true })
   }
 
   // read svg files
