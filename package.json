@@ -37,6 +37,9 @@
     "preview": "vite preview",
     "cli:dev": "tsx --tsconfig ./tsconfig.cli.json ./cli/index.ts generate -i .assets -o src/com/icons",
     "cli:build": "rollup -c && chmod +x ./dist/cli/cli.cjs",
+    "exp:dev": "tsx --tsconfig ./tsconfig.cli.json ./cli/index.ts explorer -i .assets -o src/com/icons",
+
+
     "format": "prettier --write .",
     "lint": "eslint .",
     "pack:local": "npm run build && npm run cli:build && mkdir -p out && npm pack --pack-destination ./out",

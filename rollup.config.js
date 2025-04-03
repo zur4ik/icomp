@@ -17,7 +17,7 @@ export default {
     banner: "#!/usr/bin/env node",
   },
   treeshake: true,
-  external: [/^@svgr\//, "commander", "prettier", "esbuild", "svgo", "chokidar"],
+  external: [/^@svgr\//, "commander", "prettier", "esbuild", "svgo", "chokidar", "express"],
   plugins: [
     json(),
     del({ targets: "dist/cli/*", runOnce: true }),
