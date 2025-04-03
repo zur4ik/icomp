@@ -1,10 +1,5 @@
 import { transform } from "@svgr/core"
-import {
-  adjustPathStroke,
-  fillMarkedElements,
-  groupAllPaths,
-  markConvertibleElements,
-} from "@plugins"
+import { adjustColors, adjustPathStroke, groupAllPaths, cleanSvg } from "@plugins"
 import prettier from "prettier"
 import { iconTemplate } from "../templates/iconTemplate"
 
@@ -16,10 +11,12 @@ export const transformSvg = async (name: string, data: string) => {
       typescript: true,
       exportType: "default",
       jsxRuntime: "automatic",
-      svgProps: { fill: "currentColor", width: "{width || size}", height: "{height || size}" },
+      svgProps: {
+        width: "{width || size}",
+        height: "{height || size}",
+        className: "{props.className}",
+      },
       plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
-
-      // svgo plugin for fill replacements
       svgoConfig: {
         plugins: [
           {
@@ -30,7 +27,6 @@ export const transformSvg = async (name: string, data: string) => {
             },
           },
           "convertStyleToAttrs",
-          markConvertibleElements,
           {
             name: "convertShapeToPath",
             params: {
@@ -38,20 +34,12 @@ export const transformSvg = async (name: string, data: string) => {
             },
           },
           {
-            name: "removeAttrs",
-            params: {
-              attrs: "(fill)",
-            },
+            name: "removeOffCanvasPaths",
           },
-          {
-            name: "addAttributesToSVGElement",
-            params: {
-              attributes: [{ fill: "currentColor" }],
-            },
-          },
+          cleanSvg,
+          adjustColors,
           groupAllPaths,
           adjustPathStroke,
-          fillMarkedElements,
         ],
       },
 
