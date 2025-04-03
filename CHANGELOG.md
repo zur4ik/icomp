@@ -37,3 +37,19 @@ All notable changes to this project will be documented in this file. See [standa
 * **svg:** add `adjustColors` and `cleanSvg` plugins ([0d4ef4f](https://github.com/zur4ik/icomp/commit/0d4ef4f7b2e0318aed882171f44b0fb2ccc28cc4))
 * update build output path and add preview script ([20976af](https://github.com/zur4ik/icomp/commit/20976af8729b31e8b0b73f96831c4c7489eef0a4))
 * **watcher:** add SVG file validation ([9aa0b1d](https://github.com/zur4ik/icomp/commit/9aa0b1d196a614dbbf4ce234e356d955bedf0e39))
+
+
+## 1.0.0 (2025-03-28)
+
+### Features
+
+- add `.gitignore` to exclude unwanted files ([502db35](https://github.com/zur4ik/icomp/commit/502db35de7cb4a029ed5b226ae36e37cfb4162dc))
+- add CLI tool for generating icons and exploring SVGs ([94fad64](https://github.com/zur4ik/icomp/commit/94fad644dd23f5ce0e694c36ad168c4c244c6bc8))
+- add support for React component generation from SVG ([f9ee17c](https://github.com/zur4ik/icomp/commit/f9ee17ce454bb657c517cf5246218ebd9cfa60ad))
+- add type definitions and new dependencies ([6b5b7bb](https://github.com/zur4ik/icomp/commit/6b5b7bbba4626186f72a8bdb3b2d8e59990aecca))
+- add utility for SVG to React component generation ([80d2463](https://github.com/zur4ik/icomp/commit/80d2463ccf325a3f5f27314cc5525fb036b465f7))
+- **cli:** support async action in CLI ([a2b8dfe](https://github.com/zur4ik/icomp/commit/a2b8dfef4b09c27bfcc547b551d3802f5e5c5553))
+- generate unified export file for components ([bda79b2](https://github.com/zur4ik/icomp/commit/bda79b21ebb53376de025fc57774afbed7556011))
+- initialize project with basic setup ([d314d23](https://github.com/zur4ik/icomp/commit/d314d232a71d79958f8c983746f93696f0264483))
+- integrate Prettier and ESLint configuration ([b74f202](https://github.com/zur4ik/icomp/commit/b74f202230098ee21d991be29ec6745d525bba02))
+- rename CLI tool and update project details ([947efec](https://github.com/zur4ik/icomp/commit/947efeccbc9711929edb95f4e75180077b5baea2))
