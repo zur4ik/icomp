@@ -18,6 +18,7 @@
       "@com/*": ["com/*"],
       "@shared/*": ["../shared/*"],
       "@services/*": ["services/*"],
+      "@store/*": ["store/*"],
       "@root/*": ["../*"]
     }
   },
