@@ -34,6 +34,8 @@ body {
     }
 
     &.selected {
-        background-color: red;
+        background-color: var(--color-gray-100);
+        border-color: var(--color-gray-600);
+        @apply inset-ring-gray-600 inset-ring-1;
     }
 }

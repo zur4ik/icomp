@@ -32,7 +32,7 @@ export const useIconStore = storeCreator<IconStore>("iconStore", (set) => ({
   fetchIcons: async () => {
     const res = await fetch("/api/icons")
     const icons = await res.json()
-    set({ icons }, false, "fetchIcons:Action")
+    useIconStore.getState().setIcons(icons)
     return icons
   },
   setIcons: (icons) =>

@@ -25,8 +25,8 @@ interface IconComponentProps extends SVGProps<SVGSVGElement> {
 export const Icon: FC<IconProps> = memo(({ icon, size = 24 }) => {
   const [IconComponent, setIconComponent] = useState<ComponentType<IconComponentProps> | null>(null)
   const importedRef = useRef(false)
-  const selectIcon = useIconStore((s) => s.selectIcon)
-  const selected = useIconStore((s) => s.selectedIcons.has(icon.name))
+  const selectIcon = useIconStore((st) => st.selectIcon)
+  const isSelected = useIconStore((st) => st.selectedIcons.has(icon.name))
 
   const importComponent = async () => {
     try {
@@ -58,7 +58,7 @@ export const Icon: FC<IconProps> = memo(({ icon, size = 24 }) => {
   return (
     <div
       className={cx("icon", {
-        selected: selected,
+        selected: isSelected,
       })}
       onClick={iconClickHandler}
     >
