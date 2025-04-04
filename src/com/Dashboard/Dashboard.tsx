@@ -10,7 +10,7 @@ export const Dashboard: FC = () => {
   // Fetch icons from the server
   useEffect(() => {
     fetchIcons().then()
-  }, [])
+  }, [fetchIcons])
 
   return (
     <div className={"flex grow"}>

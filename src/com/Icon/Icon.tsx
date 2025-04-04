@@ -3,6 +3,7 @@ import {
   type FC,
   memo,
   type SVGProps,
+  useCallback,
   useEffect,
   useRef,
   useState,
@@ -16,6 +17,7 @@ interface IconProps {
   icon: IconInfo
   size?: number
 }
+
 interface IconComponentProps extends SVGProps<SVGSVGElement> {
   size?: number
   width?: number
@@ -28,23 +30,20 @@ export const Icon: FC<IconProps> = memo(({ icon, size = 24 }) => {
   const selectIcon = useIconStore((st) => st.selectIcon)
   const isSelected = useIconStore((st) => st.selectedIcons.has(icon.name))
 
-  const importComponent = async () => {
+  const importComponent = useCallback(async () => {
     try {
       const mod = await import(/* @vite-ignore */ `/component/${icon.component}.js`)
       setIconComponent(() => mod.default)
-    } catch (err) {
-      console.warn("Component not found, fallback to svg:", err)
-      // setIconComponent(null)
-    }
-  }
+    } catch {}
+  }, [icon.component])
 
   const iconClickHandler = (ev: MouseEvent) => {
-    // call select icon action with key modifier ctrl/shift/none
     const isMac = /Mac/.test(window.navigator.userAgent)
     const ctrlKey = isMac ? ev.metaKey : ev.ctrlKey
     const shiftKey = ev.shiftKey
     const modifier = ctrlKey ? "ctrl" : shiftKey ? "shift" : "none"
 
+    // call action
     selectIcon(icon.name, modifier)
   }
 
@@ -53,7 +52,7 @@ export const Icon: FC<IconProps> = memo(({ icon, size = 24 }) => {
       importedRef.current = true
       importComponent().then()
     }
-  }, [])
+  }, [importComponent])
 
   return (
     <div

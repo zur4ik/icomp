@@ -79,6 +79,7 @@
     "eslint": "^9.23.0",
     "eslint-plugin-prettier": "^5.2.5",
     "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "rollup": "^4.39.0",
     "rollup-plugin-delete": "^3.0.1",
