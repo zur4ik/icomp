@@ -3,7 +3,7 @@ import { version } from "@root/package.json"
 
 export const Header: FC = () => {
   return (
-    <header className={"flex items-center justify-between border-b border-b-gray-300 p-16"}>
+    <header className={"flex items-center justify-between border-b border-b-gray-200 p-16"}>
       <div className={"mt-2 flex items-center gap-10"}>
         <h1 className="group cursor-pointer text-2xl font-bold">
           <span className={"text-gray-400 group-hover:text-red-500"}>{"<"}</span>

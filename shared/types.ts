@@ -5,3 +5,5 @@ export interface IconInfo {
   generated: boolean
   date: string
 }
+
+export type ModifierKey = "ctrl" | "shift" | "none"

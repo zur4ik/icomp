@@ -21,15 +21,19 @@ body {
 
 .icon {
     width: 100%;
-    border: 1px solid var(--color-gray-300);
+    border: 1px solid var(--color-gray-200);
     border-radius: 6px;
     aspect-ratio: 1/1;
     display: flex;
     align-content: center;
     justify-content: center;
-    cursor: pointer;
+    align-items: center;
 
     &:hover {
         background-color: var(--color-gray-100);
+    }
+
+    &.selected {
+        background-color: red;
     }
 }
