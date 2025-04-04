@@ -1,26 +1,11 @@
-import { useEffect, useState } from "react"
-import type { IconInfo } from "@shared/types"
-import { Icon } from "@com/Icon"
-import fetchIcons from "@services/fetchIcons"
 import { Header } from "@com/Header"
+import { Dashboard } from "@com/Dashboard"
 
 const App = () => {
-  const size = 24
-  const [icons, setIcons] = useState<IconInfo[]>([])
-
-  useEffect(() => {
-    fetchIcons().then((data) => setIcons(data))
-  }, [])
-
   return (
-    <div>
+    <div className={"flex h-screen flex-col"}>
       <Header />
-      <h1>Icon Explorer</h1>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, 80px)", gap: "10px" }}>
-        {icons.map((icon) => (
-          <Icon icon={icon} size={size} key={icon.name} />
-        ))}
-      </div>
+      <Dashboard />
     </div>
   )
 }

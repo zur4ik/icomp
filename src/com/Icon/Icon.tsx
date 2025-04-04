@@ -1,5 +1,5 @@
 import { type ComponentType, type FC, type SVGProps, useEffect, useRef, useState } from "react"
-import type { IconInfo } from "../../../shared/types"
+import type { IconInfo } from "@shared/types"
 
 interface IconProps {
   icon: IconInfo
@@ -33,30 +33,25 @@ export const Icon: FC<IconProps> = ({ icon, size = 24 }) => {
   }, [])
 
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        {IconComponent ? (
-          <IconComponent size={size} />
-        ) : (
-          <img
-            src={`/icon/${icon.file}`}
-            alt={icon.name}
-            width={size}
-            height={size}
-            style={{ display: "block", objectFit: "contain" }}
-            loading="lazy"
-            draggable={false}
-          />
-        )}
-
-        <span>{icon.name}</span>
-      </div>
+    <div
+      className={"icon"}
+      style={{
+        alignItems: "center",
+      }}
+    >
+      {IconComponent ? (
+        <IconComponent size={size} />
+      ) : (
+        <img
+          src={`/icon/${icon.file}`}
+          alt={icon.name}
+          width={size}
+          height={size}
+          style={{ display: "block", objectFit: "contain" }}
+          loading="lazy"
+          draggable={false}
+        />
+      )}
     </div>
   )
 }

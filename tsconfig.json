@@ -18,8 +18,8 @@
       "@com/*": ["com/*"],
       "@shared/*": ["../shared/*"],
       "@services/*": ["services/*"],
-      "@root/*": ["../*"],
-    },
+      "@root/*": ["../*"]
+    }
   },
   "include": ["src", "shared"],
   "references": [{ "path": "./tsconfig.cli.json" }]
