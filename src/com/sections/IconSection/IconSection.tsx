@@ -1,14 +1,15 @@
 import { useIconStore } from "@store/iconStore"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import cx from "classnames"
 import { IconEditField } from "@com/icons"
 
 interface SectionState {
   name: string
+  initName: string
   keywords: string
+  initKeywords: string
   placeholder: string
   disabled: boolean
-  changed: boolean
 }
 
 export const IconSection = () => {
@@ -16,11 +17,19 @@ export const IconSection = () => {
 
   const [state, setState] = useState<SectionState>({
     name: "",
+    initName: "",
     keywords: "",
+    initKeywords: "",
     placeholder: "Select icon to edit",
     disabled: true,
-    changed: false,
   })
+
+  const changed = useMemo(() => {
+    return (
+      selectedIcons.size === 1 &&
+      (state.name !== state.initName || state.keywords !== state.initKeywords)
+    )
+  }, [selectedIcons.size, state.initKeywords, state.initName, state.keywords, state.name])
 
   useEffect(() => {
     const updateState = () => {
@@ -30,45 +39,53 @@ export const IconSection = () => {
         case 0:
           setState({
             name: "",
+            initName: "",
             keywords: "",
+            initKeywords: "",
             placeholder: "Select icon to edit",
             disabled: true,
-            changed: false,
           })
           break
         case 1:
           const iconName = Array.from(selectedIcons)[0]
           const icon = useIconStore.getState().getIcon(iconName)
+
           if (!icon) {
             setState({
               name: "",
+              initName: "",
               keywords: "",
+              initKeywords: "",
               placeholder: "Select icon to edit",
               disabled: true,
-              changed: false,
             })
             return
           }
+
+          const name = icon.file.replace(/\.svg$/, "")
+          const keywords = icon.keywords || ""
+
           setState({
-            name: icon.file.replace(/\.svg$/, ""),
-            keywords: icon.keywords || "",
+            name: name,
+            initName: name,
+            keywords: keywords,
+            initKeywords: keywords,
             placeholder: "Enter icon name",
             disabled: false,
-            changed: false,
           })
           break
         default:
           setState({
             name: "",
+            initName: "",
             keywords: "",
+            initKeywords: "",
             placeholder: "Multiple icons selected",
             disabled: true,
-            changed: false,
           })
           break
       }
     }
-
     updateState()
   }, [selectedIcons])
 
@@ -127,15 +144,29 @@ export const IconSection = () => {
         </div>
       </div>
       <div className={"field-group flex items-center justify-between"}>
-        <div className={cx("prop-status invisible")}>
+        <div
+          className={cx("prop-status invisible", {
+            visible: changed,
+          })}
+        >
           <IconEditField size={16} />
-          <span>Not saved</span>
+          <span>Edited *</span>
         </div>
         <div className={"flex justify-end gap-8"}>
-          <button className={"btn btn-secondary"} disabled={!state.changed}>
+          <button
+            className={"btn btn-secondary"}
+            disabled={!changed}
+            onClick={() => {
+              setState((prev) => ({
+                ...prev,
+                name: prev.initName,
+                keywords: prev.initKeywords,
+              }))
+            }}
+          >
             Reset
           </button>
-          <button className={"btn btn-primary"} disabled={!state.changed}>
+          <button className={"btn btn-primary"} disabled={!changed}>
             Save
           </button>
         </div>
