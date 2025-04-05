@@ -60,3 +60,37 @@ body {
         color: var(--color-yellow-400);
     }
 }
+
+
+aside {
+    .panel-head {
+        font-weight: bold;
+        font-size: 12px;
+        text-transform: uppercase;
+        color: var(--color-gray-500);
+        margin-bottom: 5px;
+        border-bottom: 1px solid var(--color-gray-200);
+        padding: 7px 10px 4px;
+        vertical-align: bottom;
+        background: var(--color-gray-50);
+    }
+}
+
+.section-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--color-gray-500);
+    font-weight: bold;
+}
+.input-outer {
+    &.disabled {
+        opacity: .5;
+    }
+}
+.input {
+    &:disabled {
+        font-family: "Roboto Light", sans-serif;
+        user-select: none;
+        pointer-events: none;
+    }
+}

@@ -18,6 +18,7 @@ type State = {
 
 type Actions = {
   fetchIcons: () => Promise<IconInfo[]>
+  getIcon: (iconName: string) => IconInfo | null
   setIcons: (icons: IconInfo[]) => void
   selectIcon: (iconName: string, modifier: ModifierKey) => void
   clearSelection: () => void
@@ -34,6 +35,11 @@ export const useIconStore = storeCreator<IconStore>("iconStore", (set) => ({
     const icons = await res.json()
     useIconStore.getState().setIcons(icons)
     return icons
+  },
+  getIcon: (iconName): IconInfo | null => {
+    const icons: IconInfo[] = useIconStore.getState().icons
+    const icon = icons.find((icon) => icon.name === iconName)
+    return icon || null
   },
   setIcons: (icons) =>
     set(

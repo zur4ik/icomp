@@ -1,6 +1,7 @@
 import { type FC, type SyntheticEvent, useEffect } from "react"
 import { Icon } from "@com/Icon"
 import { useIconStore } from "@store/iconStore"
+import { IconSection } from "@com/sections/IconSection"
 
 export const Dashboard: FC = () => {
   const size = 24
@@ -32,16 +33,9 @@ export const Dashboard: FC = () => {
         ))}
       </main>
       <aside className={"w-300 border-l-1 border-l-gray-200"}>
-        <div>panel</div>
+        <div className={"panel-head"}>Properties</div>
         <div>
-          <button
-            className={"radius-3 bg-gray-300 p-5 hover:bg-gray-400"}
-            onClick={() => {
-              fetchIcons().then()
-            }}
-          >
-            TEST
-          </button>
+          <IconSection />
         </div>
       </aside>
     </div>
