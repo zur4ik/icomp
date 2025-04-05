@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/zur4ik/icomp/compare/v1.3.0...v1.4.0) (2025-04-05)
+
+
+### Features
+
+* add warning for ungenerated icons ([c18ff09](https://github.com/zur4ik/icomp/commit/c18ff09b6fb820c1987f833af9624587dde73bfc))
+
 ## [1.3.0](https://github.com/zur4ik/icomp/compare/v1.2.0...v1.3.0) (2025-04-05)
 
 
