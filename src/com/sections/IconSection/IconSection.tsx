@@ -1,7 +1,6 @@
 import { useIconStore } from "@store/iconStore"
 import { useEffect, useState } from "react"
 import cx from "classnames"
-import { NA } from "@root/cli/services/constants"
 import { IconEditField } from "@com/icons"
 
 export const IconSection = () => {
@@ -12,7 +11,7 @@ export const IconSection = () => {
   const [valuePl, setValuePl] = useState("")
 
   const [disabled, setDisabled] = useState<boolean>(false)
-  const [changed, setChanged] = useState(false)
+  const [changed] = useState(false)
 
   useEffect(() => {
     setDisabled(selectedIcons.size === 0)
