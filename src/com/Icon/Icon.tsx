@@ -1,3 +1,4 @@
+import type { MouseEvent } from "react"
 import {
   type ComponentType,
   type FC,
@@ -11,7 +12,7 @@ import {
 import type { IconInfo } from "@shared/types"
 import { useIconStore } from "@store/iconStore"
 import cx from "classnames"
-import type { MouseEvent } from "react"
+import { IconAlertTriangleSolid } from "@com/icons"
 
 interface IconProps {
   icon: IconInfo
@@ -58,6 +59,7 @@ export const Icon: FC<IconProps> = memo(({ icon, size = 24 }) => {
     <div
       className={cx("icon", {
         selected: isSelected,
+        warning: !icon.generated,
       })}
       onClick={iconClickHandler}
     >
@@ -74,6 +76,8 @@ export const Icon: FC<IconProps> = memo(({ icon, size = 24 }) => {
           draggable={false}
         />
       )}
+
+      {!icon.generated && <IconAlertTriangleSolid size={12} className={"warning"} />}
     </div>
   )
 })

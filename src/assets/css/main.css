@@ -28,6 +28,7 @@ body {
     align-content: center;
     justify-content: center;
     align-items: center;
+    position: relative;
 
     &:hover {
         background-color: var(--color-gray-100);
@@ -37,5 +38,22 @@ body {
         background-color: var(--color-gray-100);
         border-color: var(--color-gray-600);
         @apply inset-ring-gray-600 inset-ring-1;
+    }
+
+    &.warning {
+        background-color: var(--color-yellow-50);
+        border-color: var(--color-yellow-300);
+    }
+
+    &.warning.selected {
+        border-color: var(--color-gray-600);
+        @apply inset-ring-gray-600 inset-ring-1;
+    }
+
+    .warning {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        color: var(--color-yellow-400);
     }
 }

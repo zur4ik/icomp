@@ -4,8 +4,6 @@ import { checkSvgFile } from "@services/utils"
 import { processFile } from "@services/fileProcessor"
 
 export const startWatcher = (inputPath: string, outputPath: string) => {
-  console.log(` - 📂 Watching for changes in ${inputPath}...`)
-
   // Create output directory if it doesn't exist
   if (!fs.existsSync(outputPath)) {
     fs.mkdirSync(outputPath, { recursive: true })
