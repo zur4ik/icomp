@@ -43,6 +43,9 @@ body {
     &.warning {
         background-color: var(--color-yellow-50);
         border-color: var(--color-yellow-300);
+        &:focus {
+            outline: none;
+        }
     }
 
     &.warning.selected {

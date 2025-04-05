@@ -13,6 +13,7 @@ import type { IconInfo } from "@shared/types"
 import { useIconStore } from "@store/iconStore"
 import cx from "classnames"
 import { IconAlertTriangleSolid } from "@com/icons"
+import { Tooltip } from "react-tooltip"
 
 interface IconProps {
   icon: IconInfo
@@ -35,7 +36,9 @@ export const Icon: FC<IconProps> = memo(({ icon, size = 24 }) => {
     try {
       const mod = await import(/* @vite-ignore */ `/component/${icon.component}.js`)
       setIconComponent(() => mod.default)
-    } catch {}
+    } catch {
+      console.warn(`Generated component "${icon.component}" not found. Using fallback image.`)
+    }
   }, [icon.component])
 
   const iconClickHandler = (ev: MouseEvent) => {
@@ -63,6 +66,11 @@ export const Icon: FC<IconProps> = memo(({ icon, size = 24 }) => {
       })}
       onClick={iconClickHandler}
     >
+      {!icon.generated && (
+        <Tooltip id={icon.name} hidden={false} className={"bg-red-500"}>
+          Not generated
+        </Tooltip>
+      )}
       {IconComponent ? (
         <IconComponent size={size} />
       ) : (
@@ -77,7 +85,9 @@ export const Icon: FC<IconProps> = memo(({ icon, size = 24 }) => {
         />
       )}
 
-      {!icon.generated && <IconAlertTriangleSolid size={12} className={"warning"} />}
+      {!icon.generated && (
+        <IconAlertTriangleSolid size={12} className={"warning"} data-tooltip-id={icon.name} />
+      )}
     </div>
   )
 })
