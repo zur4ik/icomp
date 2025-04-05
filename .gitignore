@@ -25,5 +25,5 @@ out
 *.sln
 *.sw?
 /.assets/
-/src/com/icons/
+/src/com/demo/
 /cli/.cache/

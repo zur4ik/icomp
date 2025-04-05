@@ -9,8 +9,8 @@ export const generate = async (inputPath: string, outputPath: string, watch: boo
   // display current version off package
   console.log(`📦 icomp (cli mode) v${version}`)
 
-  // Check if the input path exists
-  if (!fs.existsSync(inputPath)) {
+  // Check if the input path exists and is a directory
+  if (!fs.existsSync(inputPath) || !fs.statSync(inputPath).isDirectory()) {
     console.error(`❌ Input path does not exist: ${inputPath}`)
     return
   }
