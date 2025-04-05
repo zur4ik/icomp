@@ -1,9 +1,9 @@
 import { useIconStore } from "@store/iconStore"
-import { useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import cx from "classnames"
 import { IconAlertTriangleSolid, IconEditField, IconInfoCircleSolid } from "@com/icons"
 import { Tooltip } from "react-tooltip"
-import { cleanKeywords, getIconName } from "@root/shared"
+import { cleanFileName, cleanKeywords, getIconName } from "@root/shared"
 
 interface SectionState {
   name: string
@@ -16,6 +16,7 @@ interface SectionState {
 
 export const IconSection = () => {
   const selectedIcons = useIconStore((st) => st.selectedIcons)
+  const renameIcon = useIconStore((st) => st.renameIcon)
   const icons = useIconStore((st) => st.icons)
 
   const [state, setState] = useState<SectionState>({
@@ -30,14 +31,13 @@ export const IconSection = () => {
   const changed = useMemo(() => {
     return (
       selectedIcons.size === 1 &&
-      (state.name !== state.initName || state.keywords !== state.initKeywords)
+      (state.name !== state.initName || cleanKeywords(state.keywords) !== state.initKeywords)
     )
   }, [selectedIcons.size, state.initKeywords, state.initName, state.keywords, state.name])
 
   const wrongName = useMemo(() => {
     const fileName = state.name + ".svg"
     const iconName = getIconName(state.name)
-    console.log("iconName", iconName)
 
     if (state.name === state.initName) {
       return false
@@ -50,6 +50,12 @@ export const IconSection = () => {
     if (wrongName) return true
     return cleanKeywords(state.keywords) === state.initKeywords && state.initKeywords !== ""
   }, [changed, state.initKeywords, state.keywords, state.name, wrongName])
+
+  const handleSave = useCallback(() => {
+    renameIcon(state.initName, state.name, state.keywords).catch((err) => {
+      console.error("Error renaming icon:", err)
+    })
+  }, [renameIcon, state.initName, state.keywords, state.name])
 
   useEffect(() => {
     const updateState = () => {
@@ -143,7 +149,7 @@ export const IconSection = () => {
             onChange={(ev) => {
               setState((prev) => ({
                 ...prev,
-                name: ev.target.value,
+                name: cleanFileName(ev.target.value),
               }))
             }}
           />
@@ -224,7 +230,7 @@ export const IconSection = () => {
           >
             Reset
           </button>
-          <button className={"btn btn-primary"} disabled={saveDisabled}>
+          <button className={"btn btn-primary"} disabled={saveDisabled} onClick={handleSave}>
             Save
           </button>
         </div>

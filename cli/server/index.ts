@@ -3,6 +3,8 @@ import { DEFAULT_HOST } from "@services/constants"
 import getIcons from "./services/getIcons"
 import type { IconInfo } from "@shared/types"
 import { CACHE_PATH, WEB_DIR, WEB_INDEX } from "../paths"
+import { renameIcon } from "./services/renameIcon"
+import { getIconInfo } from "./services/getIconInfo"
 
 export function startServer(inputPath: string, outputPath: string, port: number) {
   const app = express()
@@ -17,6 +19,27 @@ export function startServer(inputPath: string, outputPath: string, port: number)
   app.get("/api/icons", (req, res) => {
     const icons: IconInfo[] = getIcons(inputPath)
     res.json(icons)
+  })
+
+  // service to rename an icon
+  app.post("/api/rename", express.json(), (req, res) => {
+    const { fileName, newFileName, keywords } = req.body
+
+    if (!fileName || !newFileName) {
+      return res.status(400).json({ error: "Missing required fields" })
+    }
+
+    try {
+      renameIcon(inputPath, outputPath, fileName, newFileName, keywords)
+    } catch (error) {
+      console.error("Error renaming icon:", error)
+      return res.status(500).json({ error: "Failed to rename icon", errorDetails: error })
+    }
+
+    // After renaming, return new icon info
+    const iconInfo: IconInfo = getIconInfo(inputPath, newFileName + ".svg")
+
+    res.json(iconInfo)
   })
 
   // serve web app static files

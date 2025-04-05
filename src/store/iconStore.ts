@@ -2,6 +2,7 @@ import type { IconInfo, ModifierKey } from "@shared/types"
 import { create, type StateCreator } from "zustand"
 import { devtools } from "zustand/middleware"
 import { immer } from "zustand/middleware/immer"
+import { cleanKeywords, getIconName } from "@root/shared"
 
 const storeCreator = <T>(
   name: string,
@@ -22,6 +23,7 @@ type Actions = {
   setIcons: (icons: IconInfo[]) => void
   selectIcon: (iconName: string, modifier: ModifierKey) => void
   clearSelection: () => void
+  renameIcon: (fileName: string, newFileName: string, keywords: string) => Promise<IconInfo>
 }
 
 type IconStore = State & Actions
@@ -106,4 +108,42 @@ export const useIconStore = storeCreator<IconStore>("iconStore", (set) => ({
       false,
       "clearSelection:Action",
     ),
+  renameIcon: async (fileName: string, newFileName: string, keywords: string) => {
+    const res = await fetch("/api/rename", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ fileName, newFileName, keywords: cleanKeywords(keywords) }),
+    })
+
+    if (res.ok) {
+      const iconInfo: IconInfo = await res.json()
+
+      // replace old icon with new in store
+      set(
+        (state) => {
+          const oldIconName = getIconName(fileName)
+          const newIconName = getIconName(newFileName)
+          const iconIndex = state.icons.findIndex((icon) => icon.name === oldIconName)
+          if (iconIndex !== -1) {
+            state.icons[iconIndex] = iconInfo
+          }
+
+          // replace in selected icons
+          if (state.selectedIcons.has(oldIconName)) {
+            state.selectedIcons.delete(oldIconName)
+            state.selectedIcons.add(newIconName)
+          }
+        },
+        false,
+        "renameIcon:Action",
+      )
+
+      return iconInfo
+    } else {
+      const error = await res.json()
+      throw new Error(`Failed to rename icon: ${error.errorDetails}`)
+    }
+  },
 }))
