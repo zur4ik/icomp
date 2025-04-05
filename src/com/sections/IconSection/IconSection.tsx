@@ -1,7 +1,9 @@
 import { useIconStore } from "@store/iconStore"
-import { useCallback, useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import cx from "classnames"
-import { IconEditField } from "@com/icons"
+import { IconAlertTriangleSolid, IconEditField, IconInfoCircleSolid } from "@com/icons"
+import { Tooltip } from "react-tooltip"
+import { cleanKeywords, getIconName } from "@root/shared"
 
 interface SectionState {
   name: string
@@ -14,6 +16,7 @@ interface SectionState {
 
 export const IconSection = () => {
   const selectedIcons = useIconStore((st) => st.selectedIcons)
+  const icons = useIconStore((st) => st.icons)
 
   const [state, setState] = useState<SectionState>({
     name: "",
@@ -30,6 +33,23 @@ export const IconSection = () => {
       (state.name !== state.initName || state.keywords !== state.initKeywords)
     )
   }, [selectedIcons.size, state.initKeywords, state.initName, state.keywords, state.name])
+
+  const wrongName = useMemo(() => {
+    const fileName = state.name + ".svg"
+    const iconName = getIconName(state.name)
+    console.log("iconName", iconName)
+
+    if (state.name === state.initName) {
+      return false
+    }
+    return icons.some((icon) => icon.file === fileName || icon.name === iconName)
+  }, [icons, state.initName, state.name])
+
+  const saveDisabled = useMemo(() => {
+    if (!changed || state.name === "") return true
+    if (wrongName) return true
+    return cleanKeywords(state.keywords) === state.initKeywords && state.initKeywords !== ""
+  }, [changed, state.initKeywords, state.keywords, state.name, wrongName])
 
   useEffect(() => {
     const updateState = () => {
@@ -92,10 +112,24 @@ export const IconSection = () => {
   return (
     <section className={"flex flex-col gap-20 border-b-1 border-b-gray-200 p-10"}>
       <div className={"field-group"}>
-        <div className={"section-title pb-3 pl-2"}>File Name</div>
+        <Tooltip id={"file-name-info"}>
+          <p className={"text-xs"}>
+            <span className={"font-bold"}>File Name</span> will be used as the component name.
+          </p>
+        </Tooltip>
+        <div className={"section-title flex items-center gap-5 pb-3 pl-2"}>
+          File Name
+          <IconInfoCircleSolid
+            size={10}
+            tabIndex={-1}
+            className={"-mt-1 focus:outline-none"}
+            data-tooltip-id={"file-name-info"}
+          />
+        </div>
         <div
           className={cx("input-outer flex items-center gap-5 rounded-md bg-gray-100 px-10 py-8", {
             disabled: state.disabled,
+            error: wrongName,
           })}
         >
           <input
@@ -115,9 +149,32 @@ export const IconSection = () => {
           />
           {!state.disabled && <div className={"font-mono text-xs text-gray-600"}>.svg</div>}
         </div>
+        <div
+          className={cx("mt-5 items-center gap-3 p-3 text-xs text-red-500", {
+            hidden: !wrongName,
+            flex: wrongName,
+          })}
+        >
+          <IconAlertTriangleSolid size={10} className={"-mt-1"} />
+          <span className={"font-bold"}>File</span> or
+          <span className={"font-bold"}>Component</span> name must be unique.
+        </div>
       </div>
       <div className={"field-group"}>
-        <div className={"section-title pb-3 pl-2"}>Keywords</div>
+        <Tooltip id={"keywords-info"}>
+          <p className={"text-xs"}>
+            <span className={"font-bold"}>Keywords</span> will be used for searching.
+          </p>
+        </Tooltip>
+        <div className={"section-title flex items-center gap-5 pb-3 pl-2"}>
+          Keywords
+          <IconInfoCircleSolid
+            size={10}
+            tabIndex={-1}
+            className={"-mt-1 focus:outline-none"}
+            data-tooltip-id={"keywords-info"}
+          />
+        </div>
         <div
           className={cx("input-outer flex items-center gap-5 rounded-md bg-gray-100 px-10 py-8", {
             disabled: state.disabled,
@@ -143,6 +200,7 @@ export const IconSection = () => {
           />
         </div>
       </div>
+
       <div className={"field-group flex items-center justify-between"}>
         <div
           className={cx("prop-status invisible", {
@@ -166,7 +224,7 @@ export const IconSection = () => {
           >
             Reset
           </button>
-          <button className={"btn btn-primary"} disabled={!changed}>
+          <button className={"btn btn-primary"} disabled={saveDisabled}>
             Save
           </button>
         </div>

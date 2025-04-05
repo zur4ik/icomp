@@ -88,6 +88,12 @@ aside {
         opacity: 0.5;
     }
 
+    &.error, &.error:focus-within {
+        background-color: var(--color-red-50);
+        border-color: var(--color-red-300);
+        @apply inset-ring-1 inset-ring-red-300;
+    }
+
     &:focus-within {
         background-color: var(--color-gray-50);
         @apply inset-ring-1 inset-ring-gray-200;
