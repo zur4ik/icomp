@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/zur4ik/icomp/compare/v1.2.0...v1.3.0) (2025-04-05)
+
+
+### Features
+
+* add `eslint-plugin-react-hooks` and update related usages ([5495989](https://github.com/zur4ik/icomp/commit/54959893b387e7704b72d4a61a01ccff72b0950b))
+* add `Header` component and Tailwind enhancements ([e79168f](https://github.com/zur4ik/icomp/commit/e79168f092a4753d8cb9bab0d5b28c2a1976eafd))
+* add `iconStore` with Zustand for icon management ([cab7670](https://github.com/zur4ik/icomp/commit/cab767010781499e9670e7f7be16e96364a7ff73))
+* **dashboard:** implement icon deselection on click outside ([1f46423](https://github.com/zur4ik/icomp/commit/1f4642378bc2988967ba2bc97e50de8437bec788))
+* integrate `Dashboard` component into `App` ([1ece89e](https://github.com/zur4ik/icomp/commit/1ece89e0823cc52e05960e6a893228bf49fa2384))
+
 ## [1.2.0](https://github.com/zur4ik/icomp/compare/v1.1.7...v1.2.0) (2025-04-03)
 
 ### Features

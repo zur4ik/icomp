@@ -2,7 +2,7 @@
   "name": "icomp",
   "description": "A CLI tool for generating React components from SVG icons.",
   "private": false,
-  "version": "1.2.0",
+  "version": "1.3.0",
   "author": "Zura Jijavadze",
   "license": "MIT",
   "type": "module",
@@ -32,7 +32,7 @@
     "open-source"
   ],
   "scripts": {
-    "cli:dev": "tsx --tsconfig ./tsconfig.cli.json ./cli/index.ts generate -i .assets -o src/com/icons",
+    "cli:dev": "tsx --tsconfig ./tsconfig.cli.json ./cli/index.ts generate -i .assets -o src/com/test",
     "cli:bld": "rollup -c && chmod +x ./dist/cli/cli.cjs",
     "ui:dev": "vite",
     "ui:bld": "vite build",
@@ -44,7 +44,8 @@
     "pkg:link": "npm run ui:bld && npm run cli:bld && npm link",
     "pkg:test:(gen)": "icomp generate -i ./.assets -o ./src/com/icons",
     "pkg:test:(ui)": "icomp ui -i ./.assets -o ./src/com/icons",
-    "version": "standard-version"
+    "version": "standard-version",
+    "wip:gen": "tsx --tsconfig ./tsconfig.cli.json ./cli/index.ts generate -i src/assets/img/icons -o src/com/icons -w"
   },
   "dependencies": {
     "@svgr/core": "^8.1.0",
