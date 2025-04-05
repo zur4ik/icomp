@@ -1,6 +1,6 @@
 export interface IconInfo {
   name: string
-  keywords: string[]
+  keywords: string
   component: string
   file: string
   generated: boolean

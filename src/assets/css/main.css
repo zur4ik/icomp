@@ -30,6 +30,7 @@ body {
     align-items: center;
     position: relative;
 
+
     &:hover {
         background-color: var(--color-gray-100);
     }
@@ -37,20 +38,17 @@ body {
     &.selected {
         background-color: var(--color-gray-100);
         border-color: var(--color-gray-600);
-        @apply inset-ring-gray-600 inset-ring-1;
+        @apply inset-ring-1 inset-ring-gray-600;
     }
 
     &.warning {
         background-color: var(--color-yellow-50);
         border-color: var(--color-yellow-300);
-        &:focus {
-            outline: none;
-        }
     }
 
     &.warning.selected {
         border-color: var(--color-gray-600);
-        @apply inset-ring-gray-600 inset-ring-1;
+        @apply inset-ring-1 inset-ring-gray-600;
     }
 
     .warning {
@@ -58,9 +56,12 @@ body {
         top: 5px;
         right: 5px;
         color: var(--color-yellow-400);
+
+        &:focus {
+            outline: none;
+        }
     }
 }
-
 
 aside {
     .panel-head {
@@ -84,7 +85,12 @@ aside {
 }
 .input-outer {
     &.disabled {
-        opacity: .5;
+        opacity: 0.5;
+    }
+
+    &:focus-within {
+        background-color: var(--color-gray-50);
+        @apply inset-ring-1 inset-ring-gray-200;
     }
 }
 .input {
@@ -92,5 +98,53 @@ aside {
         font-family: "Roboto Light", sans-serif;
         user-select: none;
         pointer-events: none;
+    }
+}
+
+.btn {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 4px;
+
+    &[disabled] {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    &.btn-primary {
+        background-color: var(--color-gray-800);
+        color: var(--color-white);
+
+        &:hover {
+            background-color: var(--color-gray-700);
+        }
+        &:active {
+            background-color: var(--color-gray-600);
+        }
+    }
+
+    &.btn-secondary {
+        color: var(--color-gray-600);
+
+        &:hover {
+            background-color: var(--color-gray-100);
+        }
+        &:active {
+            background-color: var(--color-gray-200);
+        }
+    }
+}
+
+.prop-status {
+    display: flex;
+    align-content: center;
+    font-size: 12px;
+    gap: 3px;
+    color: var(--color-gray-500);
+
+    span {
+        padding-top: 1px;
     }
 }

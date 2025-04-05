@@ -2,40 +2,49 @@ import { useIconStore } from "@store/iconStore"
 import { useEffect, useState } from "react"
 import cx from "classnames"
 import { NA } from "@root/cli/services/constants"
+import { IconEditField } from "@com/icons"
 
 export const IconSection = () => {
   const selectedIcons = useIconStore((st) => st.selectedIcons)
 
   const [value, setValue] = useState<string>("")
-  const [keyWords, setKeyWords] = useState("")
+  const [keywords, setKeywords] = useState<string>("")
+  const [valuePl, setValuePl] = useState("")
+
   const [disabled, setDisabled] = useState<boolean>(false)
+  const [changed, setChanged] = useState(false)
 
   useEffect(() => {
     setDisabled(selectedIcons.size === 0)
 
-    if (selectedIcons.size === 1) {
-      const iconName = Array.from(selectedIcons)[0]
-      const icon = useIconStore.getState().getIcon(iconName)
-      if (!icon) {
-        setValue(NA)
+    switch (selectedIcons.size) {
+      case 0:
+        // No icon selected
+        setValue("")
+        setValuePl("Select icon to edit")
+        setKeywords("")
         setDisabled(true)
-        return
-      }
-      setValue(icon.file.replace(/\.svg$/, ""))
-      setKeyWords(icon.keywords?.join(" ") || "")
-    }
-
-    if (selectedIcons.size === 0) {
-      setValue("Select icon to edit")
-      setKeyWords(NA)
-      setDisabled(true)
-    }
-
-    if (selectedIcons.size > 1) {
-      setValue("Multiple icons selected")
-      setKeyWords(NA)
-      setDisabled(true)
-      return
+        break
+      case 1:
+        // get selected icon data
+        const iconName = Array.from(selectedIcons)[0]
+        const icon = useIconStore.getState().getIcon(iconName)
+        if (!icon) {
+          setValue("")
+          setValuePl("Select icon to edit")
+          setDisabled(true)
+          return
+        }
+        setValue(icon.file.replace(/\.svg$/, ""))
+        setKeywords(icon.keywords || "")
+        setDisabled(false)
+        break
+      default:
+        setValuePl("Multiple icons selected")
+        setValue("")
+        setKeywords("")
+        setDisabled(true)
+        break
     }
   }, [selectedIcons])
 
@@ -55,6 +64,7 @@ export const IconSection = () => {
             })}
             disabled={disabled}
             value={value}
+            placeholder={valuePl}
             onChange={(ev) => {
               setValue(ev.target.value)
             }}
@@ -78,11 +88,30 @@ export const IconSection = () => {
             )}
             rows={3}
             disabled={disabled}
-            value={keyWords}
+            value={keywords}
+            placeholder={"N/A"}
             onChange={(ev) => {
-              setKeyWords(ev.target.value)
+              setKeywords(ev.target.value)
             }}
           />
+        </div>
+      </div>
+      <div className={"field-group flex items-center justify-between"}>
+        <div
+          className={cx("prop-status invisible", {
+            visible: changed,
+          })}
+        >
+          <IconEditField size={16} />
+          <span>Not saved</span>
+        </div>
+        <div className={"flex justify-end gap-8"}>
+          <button className={"btn btn-secondary"} disabled={!changed}>
+            Reset
+          </button>
+          <button className={"btn btn-primary"} disabled={!changed}>
+            Save
+          </button>
         </div>
       </div>
     </section>

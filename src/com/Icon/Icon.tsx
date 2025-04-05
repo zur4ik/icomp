@@ -79,14 +79,19 @@ export const Icon: FC<IconProps> = memo(({ icon, size = 24 }) => {
           alt={icon.name}
           width={size}
           height={size}
-          style={{ display: "block", objectFit: "contain" }}
+          className={"block object-contain"}
           loading="lazy"
           draggable={false}
         />
       )}
 
       {!icon.generated && (
-        <IconAlertTriangleSolid size={12} className={"warning"} data-tooltip-id={icon.name} />
+        <IconAlertTriangleSolid
+          size={12}
+          className={"warning"}
+          tabIndex={-1}
+          data-tooltip-id={icon.name}
+        />
       )}
     </div>
   )
