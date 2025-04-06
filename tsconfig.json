@@ -22,6 +22,6 @@
       "@root/*": ["../*"]
     }
   },
-  "include": ["src", "shared"],
+  "include": ["src", "shared", "declarations.d.ts"],
   "references": [{ "path": "./tsconfig.cli.json" }]
 }
