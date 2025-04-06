@@ -36,9 +36,7 @@ export const Icon: FC<IconProps> = memo(({ icon, size = 24 }) => {
     try {
       const mod = await import(/* @vite-ignore */ `/component/${icon.component}.js`)
       setIconComponent(() => mod.default)
-    } catch {
-      console.warn(`Generated component "${icon.component}" not found. Using fallback image.`)
-    }
+    } catch {}
   }, [icon.component])
 
   const iconClickHandler = (ev: MouseEvent) => {
