@@ -65,7 +65,7 @@ export const Icon: FC<IconProps> = memo(({ icon, size = 24 }) => {
       onClick={iconClickHandler}
     >
       {!icon.generated && (
-        <Tooltip id={icon.name} hidden={false} className={"bg-red-500"}>
+        <Tooltip id={icon.name} hidden={false} className={"z-10 bg-red-500"}>
           Not generated
         </Tooltip>
       )}

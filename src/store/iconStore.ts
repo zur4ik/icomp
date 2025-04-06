@@ -24,6 +24,7 @@ type Actions = {
   selectIcon: (iconName: string, modifier: ModifierKey) => void
   clearSelection: () => void
   renameIcon: (fileName: string, newFileName: string, keywords: string) => Promise<IconInfo>
+  generateIcons: (icons: string[]) => Promise<void>
 }
 
 type IconStore = State & Actions
@@ -144,6 +145,35 @@ export const useIconStore = storeCreator<IconStore>("iconStore", (set) => ({
     } else {
       const error = await res.json()
       throw new Error(`Failed to rename icon: ${error.errorDetails}`)
+    }
+  },
+  generateIcons: async (icons: string[]) => {
+    // get icon file names
+    const files = icons.map((icon) => {
+      const iconInfo = useIconStore.getState().getIcon(icon)
+      if (!iconInfo) {
+        throw new Error(`Icon not found: ${icon}`)
+      }
+      return iconInfo.file
+    })
+
+    const res = await fetch("/api/generate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ files }),
+    })
+
+    if (res.ok) {
+      await useIconStore.getState().fetchIcons()
+      set((state) => {
+        state.selectedIcons = new Set(icons)
+      })
+      return
+    } else {
+      const error = await res.json()
+      throw new Error(`Failed to generate icons: ${error.errorDetails}`)
     }
   },
 }))

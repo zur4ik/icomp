@@ -5,6 +5,7 @@ import type { IconInfo } from "@shared/types"
 import { CACHE_PATH, WEB_DIR, WEB_INDEX } from "../paths"
 import { renameIcon } from "./services/renameIcon"
 import { getIconInfo } from "./services/getIconInfo"
+import generateIcons from "./services/generateIcons"
 
 export function startServer(inputPath: string, outputPath: string, port: number) {
   const app = express()
@@ -40,6 +41,24 @@ export function startServer(inputPath: string, outputPath: string, port: number)
     const iconInfo: IconInfo = getIconInfo(inputPath, newFileName + ".svg")
 
     res.json(iconInfo)
+  })
+
+  // generate icons
+  app.post("/api/generate", express.json(), async (req, res) => {
+    const { files } = req.body
+
+    if (!files || !Array.isArray(files)) {
+      return res.status(400).json({ error: "Invalid parameters" })
+    }
+
+    try {
+      // Call the function to generate icons
+      await generateIcons(inputPath, outputPath, files)
+      res.status(200).json({ message: "Icons generated successfully" })
+    } catch (error) {
+      console.error("Error generating icons:", error)
+      res.status(500).json({ error: "Failed to generate icons", errorDetails: error })
+    }
   })
 
   // serve web app static files

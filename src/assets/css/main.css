@@ -30,7 +30,6 @@ body {
     align-items: center;
     position: relative;
 
-
     &:hover {
         background-color: var(--color-gray-100);
     }
@@ -83,12 +82,14 @@ aside {
     color: var(--color-gray-500);
     font-weight: bold;
 }
+
 .input-outer {
     &.disabled {
         opacity: 0.5;
     }
 
-    &.error, &.error:focus-within {
+    &.error,
+    &.error:focus-within {
         background-color: var(--color-red-50);
         border-color: var(--color-red-300);
         @apply inset-ring-1 inset-ring-red-300;
@@ -99,6 +100,7 @@ aside {
         @apply inset-ring-1 inset-ring-gray-200;
     }
 }
+
 .input {
     &:disabled {
         font-family: "Roboto Light", sans-serif;
@@ -113,6 +115,9 @@ aside {
     text-transform: uppercase;
     padding: 5px 10px;
     border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &[disabled] {
         opacity: 0.5;
@@ -126,8 +131,14 @@ aside {
         &:hover {
             background-color: var(--color-gray-700);
         }
+
         &:active {
             background-color: var(--color-gray-600);
+        }
+
+        &:focus {
+            background-color: var(--color-gray-700);
+            outline: none;
         }
     }
 
@@ -137,9 +148,18 @@ aside {
         &:hover {
             background-color: var(--color-gray-100);
         }
+
         &:active {
             background-color: var(--color-gray-200);
         }
+    }
+
+    &.btn-lg {
+        padding: 10px;
+        font-size: var(--text-sm);
+        text-align: center;
+        font-weight: bold;
+        border-radius: 8px;
     }
 }
 
@@ -159,5 +179,19 @@ aside {
     &.tooltip-sm {
         font-size: 12px;
         padding: 4px 5px;
+    }
+}
+
+.mini-scroll {
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 8px;
+        background-color: var(--color-gray-300);
+    }
+
+    /* Add a thumb */
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--color-gray-900);
     }
 }

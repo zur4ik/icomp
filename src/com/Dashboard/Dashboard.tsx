@@ -3,6 +3,7 @@ import { Icon } from "@com/Icon"
 import { useIconStore } from "@store/iconStore"
 import { IconNameSection } from "@com/sections"
 import { IconInfoSection } from "@com/sections/IconInfoSection/IconInfoSection"
+import GenerateButton from "@com/GenerateButton/GenerateButton"
 
 export const Dashboard: FC = () => {
   const size = 24
@@ -33,12 +34,13 @@ export const Dashboard: FC = () => {
           <Icon icon={icon} size={size} key={icon.name} />
         ))}
       </main>
-      <aside className={"w-300 border-l-1 border-l-gray-200"}>
+      <aside className={"mini-scroll flex w-300 flex-col border-l-1 border-l-gray-200"}>
         <div className={"panel-head"}>Properties</div>
-        <div>
+        <div className={"h-0 min-h-200 shrink grow overflow-y-auto"}>
           <IconNameSection />
           <IconInfoSection />
         </div>
+        <GenerateButton />
       </aside>
     </div>
   )
