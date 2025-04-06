@@ -1,0 +1,48 @@
+@keyframes loader {
+    0% {
+        top: 0.1em;
+        height: 0.8em;
+    }
+    50%, 100% {
+        top: 0.3em;
+        height: 0.4em;
+    }
+}
+
+.loader {
+    font-size: 24px;
+    display: inline-block;
+    position: relative;
+    width: 1em;
+    height: 1em;
+
+    &, div {
+        box-sizing: border-box;
+    }
+
+    div {
+        display: inline-block;
+        position: absolute;
+        left: 0.1em;
+        width: 0.2em;
+        background: currentColor;
+        animation: loader 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+
+        &:nth-child(1) {
+            left: 0.1em;
+            animation-delay: -0.24s;
+        }
+        &:nth-child(2) {
+            left : 0.4em;
+            animation-delay: -0.12s;
+        }
+        &:nth-child(3) {
+            left: 0.7em;
+            animation-delay: 0s;
+        }
+    }
+}
+
+
+
+
