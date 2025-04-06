@@ -154,3 +154,10 @@ aside {
         padding-top: 1px;
     }
 }
+
+.tooltip {
+    &.tooltip-sm {
+        font-size: 12px;
+        padding: 4px 5px;
+    }
+}

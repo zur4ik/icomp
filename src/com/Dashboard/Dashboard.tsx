@@ -2,6 +2,7 @@ import { type FC, type SyntheticEvent, useEffect } from "react"
 import { Icon } from "@com/Icon"
 import { useIconStore } from "@store/iconStore"
 import { IconNameSection } from "@com/sections"
+import { IconInfoSection } from "@com/sections/IconInfoSection/IconInfoSection"
 
 export const Dashboard: FC = () => {
   const size = 24
@@ -36,6 +37,7 @@ export const Dashboard: FC = () => {
         <div className={"panel-head"}>Properties</div>
         <div>
           <IconNameSection />
+          <IconInfoSection />
         </div>
       </aside>
     </div>

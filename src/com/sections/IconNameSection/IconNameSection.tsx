@@ -3,13 +3,14 @@ import { useIconNameState } from "@com/sections/IconNameSection/hooks/useIconNam
 import { InputFieldGroup } from "@com/sections/IconNameSection/InputFieldGroup"
 import { SectionActions } from "@com/sections/IconNameSection/SectionActions"
 import { InputFieldErrors } from "@com/sections/IconNameSection/InputFieldErrors"
+import Section from "@com/sections/Section"
 
 export const IconNameSection = () => {
   const { state, setState, changed, wrongName, saveDisabled, handleSave, handleReset } =
     useIconNameState()
 
   return (
-    <section className={"flex flex-col gap-20 border-b-1 border-b-gray-200 p-10"}>
+    <Section>
       <div>
         <InputFieldGroup
           label={"File Name"}
@@ -42,6 +43,6 @@ export const IconNameSection = () => {
         onSave={handleSave}
         onReset={handleReset}
       />
-    </section>
+    </Section>
   )
 }

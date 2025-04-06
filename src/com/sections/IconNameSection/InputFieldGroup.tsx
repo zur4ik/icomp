@@ -1,15 +1,16 @@
 import { Tooltip } from "react-tooltip"
-import { IconAlertTriangleSolid, IconInfoCircleSolid } from "@com/icons"
+import { IconInfoCircleSolid } from "@com/icons"
 import cx from "classnames"
 import type { FC, InputHTMLAttributes, ReactNode } from "react"
+import { FieldTitle } from "@com/FieldTitle/FieldTitle"
 
 interface InputFieldGroupProps {
   label: string
-  tooltip: string | ReactNode
+  tooltip?: string | ReactNode
   value: string
-  disabled: boolean
-  placeholder: string
-  onChange: (val: string) => void
+  disabled?: boolean
+  placeholder?: string
+  onChange?: (val: string) => void
   error?: boolean
   suffix?: ReactNode
   inputProps: InputHTMLAttributes<unknown> & {
@@ -23,7 +24,7 @@ export const InputFieldGroup: FC<InputFieldGroupProps> = ({
   label,
   tooltip,
   value,
-  disabled,
+  disabled = false,
   placeholder,
   onChange,
   error,
@@ -33,20 +34,24 @@ export const InputFieldGroup: FC<InputFieldGroupProps> = ({
   const Input = inputProps.as === "textarea" ? "textarea" : "input"
   return (
     <div className={"field-group"}>
-      <Tooltip id={label}>
-        <p className={"text-xs"}>
-          <span className={"font-bold"}>{label}</span> {tooltip}
-        </p>
-      </Tooltip>
-      <div className={"section-title flex items-center gap-5 pb-3 pl-2"}>
+      {tooltip && (
+        <Tooltip id={label}>
+          <p className={"text-xs"}>
+            <span className={"font-bold"}>{label}</span> {tooltip}
+          </p>
+        </Tooltip>
+      )}
+      <FieldTitle>
         {label}
-        <IconInfoCircleSolid
-          size={10}
-          tabIndex={-1}
-          className={"-mt-1 focus:outline-none"}
-          data-tooltip-id={label}
-        />
-      </div>
+        {tooltip && (
+          <IconInfoCircleSolid
+            size={10}
+            tabIndex={-1}
+            className={"-mt-1 focus:outline-none"}
+            data-tooltip-id={label}
+          />
+        )}
+      </FieldTitle>
       <div
         className={cx("input-outer flex items-center gap-5 rounded-md bg-gray-100 px-10 py-8", {
           disabled: disabled,
@@ -62,7 +67,7 @@ export const InputFieldGroup: FC<InputFieldGroupProps> = ({
           disabled={disabled}
           value={value}
           placeholder={placeholder}
-          onChange={(ev) => onChange(ev.target.value)}
+          onChange={(ev) => typeof onChange === "function" && onChange(ev.target.value)}
         />
         {suffix}
       </div>
