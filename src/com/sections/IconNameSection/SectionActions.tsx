@@ -7,17 +7,31 @@ interface SectionActionsProps {
   disabled: boolean
   onSave: () => void
   onReset: () => void
+  onCancel?: () => void
 }
-export const SectionActions: FC<SectionActionsProps> = ({ changed, disabled, onSave, onReset }) => {
+export const SectionActions: FC<SectionActionsProps> = ({
+  changed,
+  disabled,
+  onSave,
+  onReset,
+  onCancel,
+}) => {
   return (
     <div className={"field-group flex items-center justify-between"}>
-      <div
-        className={cx("prop-status invisible", {
-          visible: changed,
-        })}
-      >
-        <IconEditField size={16} />
-        <span>Edited *</span>
+      {!onCancel && (
+        <div
+          className={cx("prop-status invisible", {
+            visible: changed,
+          })}
+        >
+          <IconEditField size={16} />
+          <span>Edited *</span>
+        </div>
+      )}
+      <div>
+        <button className={"btn btn-secondary"} onClick={onCancel}>
+          Cancel
+        </button>
       </div>
       <div className={"flex justify-end gap-8"}>
         <button className={"btn btn-secondary"} disabled={!changed} onClick={onReset}>

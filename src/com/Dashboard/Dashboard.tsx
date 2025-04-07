@@ -4,6 +4,8 @@ import { useIconStore } from "@store/iconStore"
 import { IconNameSection } from "@com/sections"
 import { IconInfoSection } from "@com/sections/IconInfoSection/IconInfoSection"
 import GenerateButton from "@com/GenerateButton/GenerateButton"
+import { DropZone } from "@com/DropZone/DropZone"
+import Modals from "@com/modals/Modals"
 
 export const Dashboard: FC = () => {
   const size = 24
@@ -42,6 +44,8 @@ export const Dashboard: FC = () => {
         </div>
         <GenerateButton />
       </aside>
+      <DropZone onDropFile={() => {}} />
+      <Modals />
     </div>
   )
 }

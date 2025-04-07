@@ -1,15 +1,6 @@
 import type { IconInfo, ModifierKey } from "@shared/types"
-import { create, type StateCreator } from "zustand"
-import { devtools } from "zustand/middleware"
-import { immer } from "zustand/middleware/immer"
 import { cleanKeywords, getIconName } from "@root/shared"
-
-const storeCreator = <T>(
-  name: string,
-  initializer: StateCreator<T, [["zustand/devtools", never], ["zustand/immer", never]], []>,
-) => {
-  return create<T>()(devtools(immer(initializer), { name }))
-}
+import { storeCreator } from "@store/utils"
 
 type State = {
   icons: IconInfo[]
