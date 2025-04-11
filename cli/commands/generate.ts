@@ -1,13 +1,16 @@
 import fs from "node:fs"
 import path from "node:path"
-import { version } from "../../package.json"
 import { createComponent } from "@services/componentGenerator"
 import { generateIndex } from "@services/indexGenerator"
 import { startWatcher } from "@services/fileWatcher"
+import { createRequire } from "node:module"
+
+const require = createRequire(import.meta.url)
+const pkg = require("../../package.json")
 
 export const generate = async (inputPath: string, outputPath: string, watch: boolean = false) => {
   // display current version off package
-  console.log(`📦 icomp (cli mode) v${version}`)
+  console.log(`📦 icomp (cli mode) v${pkg.version}`)
 
   // Check if the input path exists and is a directory
   if (!fs.existsSync(inputPath) || !fs.statSync(inputPath).isDirectory()) {

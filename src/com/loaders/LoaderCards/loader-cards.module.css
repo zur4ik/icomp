@@ -3,7 +3,8 @@
         top: 0.1em;
         height: 0.8em;
     }
-    50%, 100% {
+    50%,
+    100% {
         top: 0.3em;
         height: 0.4em;
     }
@@ -16,7 +17,8 @@
     width: 1em;
     height: 1em;
 
-    &, div {
+    &,
+    div {
         box-sizing: border-box;
     }
 
@@ -33,7 +35,7 @@
             animation-delay: -0.24s;
         }
         &:nth-child(2) {
-            left : 0.4em;
+            left: 0.4em;
             animation-delay: -0.12s;
         }
         &:nth-child(3) {
@@ -42,7 +44,3 @@
         }
     }
 }
-
-
-
-

@@ -8,7 +8,7 @@ import reactHooks from "eslint-plugin-react-hooks"
 export default [
   {
     files: ["**/*.{ts,tsx}"],
-    ignores: ["src/com/icons/**/*"],
+    ignores: ["src/com/icons/**/*", "src/com/demo/**/*"],
     languageOptions: {
       parser: tsParser,
       parserOptions: {

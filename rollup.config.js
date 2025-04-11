@@ -25,6 +25,7 @@ export default {
     commonjs(),
     typescript({
       tsconfig: path.resolve(__dirname, "tsconfig.cli.json"),
+      outputToFilesystem: false,
     }),
     terser(),
     {

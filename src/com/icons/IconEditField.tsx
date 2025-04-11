@@ -16,7 +16,9 @@ const IconEditField = ({ size = 24, width, height, ...props }: IconProps) => (
     className={props.className}
     {...props}
   >
-    <desc>{"Cash Payment Sign 1 Streamline Icon: https://streamlinehq.com"}</desc>
+    <desc>
+      {"Cash Payment Sign 1 Streamline Icon: https://streamlinehq.com"}
+    </desc>
     <g>
       <path
         d="M9.61 16.53a1 1 0 0 0 1 1h7.16a1 1 0 0 0 0 -1.91h-7.2a1 1 0 0 0 -0.96 0.91Z"
