@@ -6,8 +6,16 @@ import { InputFieldErrors } from "@com/sections/IconNameSection/InputFieldErrors
 import Section from "@com/sections/Section"
 
 export const IconNameSection = () => {
-  const { state, setState, changed, wrongName, saveDisabled, handleSave, handleReset } =
-    useIconNameState()
+  const {
+    state,
+    setState,
+    changed,
+    wrongName,
+    saveDisabled,
+    handleSave,
+    handleReset,
+    handleRemove,
+  } = useIconNameState()
 
   return (
     <Section>
@@ -42,6 +50,8 @@ export const IconNameSection = () => {
         disabled={saveDisabled}
         onSave={handleSave}
         onReset={handleReset}
+        removeEnabled={state.removeEnabled}
+        onRemove={handleRemove}
       />
     </Section>
   )

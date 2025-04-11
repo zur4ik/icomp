@@ -16,6 +16,7 @@
       "@/*": ["./*"],
       "@css/*": ["assets/css/*"],
       "@com/*": ["com/*"],
+      "@ui/*": ["ui/*"],
       "@shared/*": ["../shared/*"],
       "@services/*": ["services/*"],
       "@store/*": ["store/*"],

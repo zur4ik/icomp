@@ -17,6 +17,7 @@ type Actions = {
   renameIcon: (fileName: string, newFileName: string, keywords: string) => Promise<IconInfo>
   generateIcons: (icons: string[]) => Promise<void>
   importIcons: (files: ImportFileInfo[]) => Promise<void>
+  removeIcons: (icons: string[]) => Promise<void>
 }
 
 type IconStore = State & Actions
@@ -189,6 +190,32 @@ export const useIconStore = storeCreator<IconStore>("iconStore", (set) => ({
     } else {
       const error = await res.json()
       throw new Error(`Failed to import icons: ${error.errorDetails}`)
+    }
+  },
+  removeIcons: async (icons: string[]) => {
+    // get icon file names
+    const files = icons.map((icon) => {
+      const iconInfo = useIconStore.getState().getIcon(icon)
+      if (!iconInfo) {
+        throw new Error(`Icon not found: ${icon}`)
+      }
+      return iconInfo.file
+    })
+
+    const res = await fetch("/api/remove", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ files }),
+    })
+
+    if (res.ok) {
+      await useIconStore.getState().fetchIcons()
+      return
+    } else {
+      const error = await res.json()
+      throw new Error(`Failed to remove icons: ${error.errorDetails}`)
     }
   },
 }))

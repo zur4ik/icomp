@@ -154,6 +154,19 @@ aside {
         }
     }
 
+    &.btn-danger {
+        color: var(--color-red-400);
+
+        &:hover {
+            background-color: var(--color-red-100);
+            color: var(--color-red-600);
+        }
+
+        &:active {
+            background-color: var(--color-red-200);
+        }
+    }
+
     &.btn-lg {
         padding: 10px;
         font-size: var(--text-sm);

@@ -9,6 +9,7 @@ interface IconNameState {
   initKeywords: string
   placeholder: string
   disabled: boolean
+  removeEnabled: boolean
 }
 
 export const useIconNameState = () => {
@@ -23,6 +24,7 @@ export const useIconNameState = () => {
     initKeywords: "",
     placeholder: "Select icon to edit",
     disabled: true,
+    removeEnabled: false,
   })
 
   useEffect(() => {
@@ -37,6 +39,7 @@ export const useIconNameState = () => {
         initKeywords: "",
         placeholder: size > 1 ? "Multiple icons selected" : "Select icon to edit",
         disabled: true,
+        removeEnabled: size > 0,
       })
       return
     }
@@ -58,6 +61,7 @@ export const useIconNameState = () => {
       initKeywords: keywords,
       placeholder: "Enter icon name",
       disabled: false,
+      removeEnabled: true,
     }))
   }, [selectedIcons])
 
@@ -94,6 +98,10 @@ export const useIconNameState = () => {
     }))
   }, [])
 
+  const handleRemove = useCallback(() => {
+    console.log("remove")
+  }, [])
+
   return {
     state,
     setState,
@@ -102,5 +110,6 @@ export const useIconNameState = () => {
     saveDisabled,
     handleSave,
     handleReset,
+    handleRemove,
   }
 }

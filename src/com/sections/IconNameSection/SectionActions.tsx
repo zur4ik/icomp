@@ -1,6 +1,8 @@
 import cx from "classnames"
 import { IconEditField } from "@com/icons"
 import type { FC } from "react"
+import { REMOVE_FILE_MODAL } from "@com/modals"
+import { useAppStore } from "@store/appStore"
 
 interface SectionActionsProps {
   changed: boolean
@@ -8,6 +10,8 @@ interface SectionActionsProps {
   onSave: () => void
   onReset: () => void
   onCancel?: () => void
+  removeEnabled?: boolean
+  onRemove?: () => void
 }
 export const SectionActions: FC<SectionActionsProps> = ({
   changed,
@@ -15,12 +19,28 @@ export const SectionActions: FC<SectionActionsProps> = ({
   onSave,
   onReset,
   onCancel,
+  removeEnabled = false,
+  onRemove,
 }) => {
+  const openModal = useAppStore((state) => state.openModal)
   return (
-    <div className={"field-group flex items-center justify-between"}>
+    <div className={"field-group flex w-full items-center justify-between"}>
+      {!!onRemove && (
+        <div>
+          <button
+            className={"btn btn-danger"}
+            onClick={() => {
+              openModal(REMOVE_FILE_MODAL)
+            }}
+            disabled={!removeEnabled}
+          >
+            Remove
+          </button>
+        </div>
+      )}
       {!onCancel && (
         <div
-          className={cx("prop-status invisible", {
+          className={cx("prop-status invisible justify-self-start", {
             visible: changed,
           })}
         >
@@ -28,6 +48,7 @@ export const SectionActions: FC<SectionActionsProps> = ({
           <span>Edited *</span>
         </div>
       )}
+
       {!!onCancel && (
         <div>
           <button className={"btn btn-secondary"} onClick={onCancel}>

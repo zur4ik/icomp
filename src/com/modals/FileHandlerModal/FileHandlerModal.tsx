@@ -5,12 +5,10 @@ import { cleanFileName, cleanKeywords, getIconName } from "@root/shared"
 import { useIconStore } from "@store/iconStore"
 import { InputFieldErrors } from "@com/sections/IconNameSection/InputFieldErrors"
 import { useAppStore } from "@store/appStore"
-import { FILE_HANDLER_MODAL } from "@com/modals"
+import { FILE_HANDLER_MODAL, type ModalCommonProps } from "@com/modals"
+import Modal from "@ui/Modal/Modal"
 
-type FileHandlerModalProps = {
-  show?: boolean
-}
-const FileHandlerModal: FC<FileHandlerModalProps> = ({ show = false }) => {
+const FileHandlerModal: FC<ModalCommonProps> = ({ show = false }) => {
   const icons = useIconStore((state) => state.icons)
   const importIcons = useIconStore((state) => state.importIcons)
   const closeModal = useAppStore((state) => state.closeModal)
@@ -97,27 +95,10 @@ const FileHandlerModal: FC<FileHandlerModalProps> = ({ show = false }) => {
   }
 
   return (
-    <div
-      className={
-        "fixed inset-0 z-5 flex items-center justify-center bg-gray-200/50 backdrop-blur-xs"
-      }
-      role="modal"
-      onClick={(ev) => {
-        const target = ev.target as HTMLElement
-        if (target.role === "modal") {
-          handleClose()
-        }
-      }}
-    >
-      <div className={"radius-8 w-400 bg-white p-10 shadow-md"}>
-        <div
-          className={
-            "-mx-10 border-b-1 border-b-gray-200 px-10 pb-5 text-sm font-bold text-gray-800 uppercase"
-          }
-        >
-          Import SVG
-        </div>
-        <div className={"flex flex-col gap-20 pt-10"}>
+    <Modal name={FILE_HANDLER_MODAL}>
+      <Modal.Title>Import SVG</Modal.Title>
+      <Modal.Content>
+        <div className={"flex flex-col gap-20"}>
           <div className={"flex items-center justify-center pt-20 pb-10"}>
             <div className={"icon inline-flex !size-72 items-center justify-center"}>
               <img
@@ -155,16 +136,18 @@ const FileHandlerModal: FC<FileHandlerModalProps> = ({ show = false }) => {
               rows: 3,
             }}
           />
-          <SectionActions
-            changed={changed}
-            disabled={disabled}
-            onSave={handleSave}
-            onReset={handleReset}
-            onCancel={handleClose}
-          />
         </div>
-      </div>
-    </div>
+      </Modal.Content>
+      <Modal.Footer>
+        <SectionActions
+          changed={changed}
+          disabled={disabled}
+          onSave={handleSave}
+          onReset={handleReset}
+          onCancel={handleClose}
+        />
+      </Modal.Footer>
+    </Modal>
   )
 }
 export default FileHandlerModal

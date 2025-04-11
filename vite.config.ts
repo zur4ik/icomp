@@ -25,6 +25,7 @@ export default defineConfig({
       "@shared": path.resolve(__dirname, "shared"),
       "@css": path.resolve(__dirname, "src/assets/css"),
       "@com": path.resolve(__dirname, "src/com"),
+      "@ui": path.resolve(__dirname, "src/ui"),
       "@services": path.resolve(__dirname, "src/services"),
       "@store": path.resolve(__dirname, "src/store"),
       "@root": path.resolve(__dirname, "."),
