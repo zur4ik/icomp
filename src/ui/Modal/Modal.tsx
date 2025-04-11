@@ -1,4 +1,4 @@
-import { type FC, type PropsWithChildren } from "react"
+import { type FC, type PropsWithChildren, useRef } from "react"
 import { useAppStore } from "@store/appStore"
 
 type ModalProps = {
@@ -15,6 +15,7 @@ type ModalComponent = FC<ModalProps> & {
 const Modal: ModalComponent = ({ children, name, closeOnBackdrop = true }) => {
   const closeModal = useAppStore((state) => state.closeModal)
   const isOpen = useAppStore((state) => state.modals.has(name || ""))
+  const mouseDownTargetRef = useRef<EventTarget | null>(null)
 
   if (!name || !isOpen) {
     return null
@@ -26,10 +27,13 @@ const Modal: ModalComponent = ({ children, name, closeOnBackdrop = true }) => {
         "fixed inset-0 z-5 flex items-center justify-center bg-gray-200/50 backdrop-blur-xs"
       }
       role="modal"
-      onClick={(ev) => {
+      onMouseDown={(ev) => {
+        mouseDownTargetRef.current = ev.target
+      }}
+      onMouseUp={(ev) => {
         if (!closeOnBackdrop) return
         const target = ev.target as HTMLElement
-        if (target.role === "modal") {
+        if (target.role === "modal" && mouseDownTargetRef.current === target) {
           closeModal(name)
         }
       }}
