@@ -28,11 +28,13 @@ export const SectionActions: FC<SectionActionsProps> = ({
           <span>Edited *</span>
         </div>
       )}
-      <div>
-        <button className={"btn btn-secondary"} onClick={onCancel}>
-          Cancel
-        </button>
-      </div>
+      {!!onCancel && (
+        <div>
+          <button className={"btn btn-secondary"} onClick={onCancel}>
+            Cancel
+          </button>
+        </div>
+      )}
       <div className={"flex justify-end gap-8"}>
         <button className={"btn btn-secondary"} disabled={!changed} onClick={onReset}>
           Reset

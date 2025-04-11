@@ -12,6 +12,7 @@ type FileHandlerModalProps = {
 }
 const FileHandlerModal: FC<FileHandlerModalProps> = ({ show = false }) => {
   const icons = useIconStore((state) => state.icons)
+  const importIcons = useIconStore((state) => state.importIcons)
   const closeModal = useAppStore((state) => state.closeModal)
   const modalData = useAppStore((state) => state.modalData?.[FILE_HANDLER_MODAL])
 
@@ -43,6 +44,13 @@ const FileHandlerModal: FC<FileHandlerModalProps> = ({ show = false }) => {
   const handleClose = useCallback(() => {
     closeModal(FILE_HANDLER_MODAL)
   }, [closeModal])
+
+  const handleSave = useCallback(async () => {
+    if (modalData?.svg) {
+      await importIcons([{ name: state.name, keywords: state.keywords, content: modalData.svg }])
+    }
+    handleClose()
+  }, [handleClose, importIcons, modalData, state.keywords, state.name])
 
   const error = useMemo(() => {
     // check if file name or icon name already exists
@@ -150,7 +158,7 @@ const FileHandlerModal: FC<FileHandlerModalProps> = ({ show = false }) => {
           <SectionActions
             changed={changed}
             disabled={disabled}
-            onSave={() => {}}
+            onSave={handleSave}
             onReset={handleReset}
             onCancel={handleClose}
           />

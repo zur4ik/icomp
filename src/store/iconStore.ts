@@ -1,4 +1,4 @@
-import type { IconInfo, ModifierKey } from "@shared/types"
+import type { IconInfo, ImportFileInfo, ModifierKey } from "@shared/types"
 import { cleanKeywords, getIconName } from "@root/shared"
 import { storeCreator } from "@store/utils"
 
@@ -16,6 +16,7 @@ type Actions = {
   clearSelection: () => void
   renameIcon: (fileName: string, newFileName: string, keywords: string) => Promise<IconInfo>
   generateIcons: (icons: string[]) => Promise<void>
+  importIcons: (files: ImportFileInfo[]) => Promise<void>
 }
 
 type IconStore = State & Actions
@@ -165,6 +166,29 @@ export const useIconStore = storeCreator<IconStore>("iconStore", (set) => ({
     } else {
       const error = await res.json()
       throw new Error(`Failed to generate icons: ${error.errorDetails}`)
+    }
+  },
+  importIcons: async (files: ImportFileInfo[]) => {
+    const res = await fetch("/api/import", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ files }),
+    })
+
+    if (res.ok) {
+      await useIconStore.getState().fetchIcons()
+      const iconNames = files.map((file) => getIconName(file.name))
+      set((state) => {
+        iconNames.forEach((iconName) => {
+          state.selectedIcons.add(iconName)
+        })
+      })
+      return
+    } else {
+      const error = await res.json()
+      throw new Error(`Failed to import icons: ${error.errorDetails}`)
     }
   },
 }))

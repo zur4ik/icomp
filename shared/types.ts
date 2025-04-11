@@ -8,3 +8,9 @@ export interface IconInfo {
 }
 
 export type ModifierKey = "ctrl" | "shift" | "none"
+
+export interface ImportFileInfo {
+  name: string
+  keywords: string
+  content: string
+}
