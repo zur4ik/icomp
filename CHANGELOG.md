@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/zur4ik/icomp/compare/v1.4.0...v1.5.0) (2025-04-11)
+
+
+### Features
+
+* add `CopyButton` and `IconInfoSection` components ([7f95c38](https://github.com/zur4ik/icomp/commit/7f95c3825697baaefc88d11323c0dc2eef6a798e))
+* add `GenerateButton` and `LoaderCards` components ([096b12b](https://github.com/zur4ik/icomp/commit/096b12b3f9a336438713dc376b691c2eedd40cd2))
+* add `IconAlertTriangleSolid` component and improve CLI ([fc992e7](https://github.com/zur4ik/icomp/commit/fc992e7059bf6b6e1beca99c628dfd814c9fd74b))
+* add `IconInfoCircleSolid` and improve icon handling ([88bbfe0](https://github.com/zur4ik/icomp/commit/88bbfe0eb0c50f1d9e68024be4aca87e93e2d9f8))
+* add `IconSection` for editing selected icons ([f81b820](https://github.com/zur4ik/icomp/commit/f81b82034fa50327d0df040d5157dce02472d027))
+* add dropzone with modal for SVG file handling ([ec82884](https://github.com/zur4ik/icomp/commit/ec828845bfc794da3b93b912b4a998d48a4cb7c8))
+* add icon generation service and related updates ([e4bf33e](https://github.com/zur4ik/icomp/commit/e4bf33e15e1775157acb649c165bd0f5a483aca6))
+* add icon renaming and related utility features ([ae56d9f](https://github.com/zur4ik/icomp/commit/ae56d9fa1db951f24b0021e269661f7b5bb3a9f1))
+* add keyword cleaning and icon edit functionality ([32eed55](https://github.com/zur4ik/icomp/commit/32eed55fe56624ed1e5b52bef4cc3b325d6a600c))
+* add remove icon functionality with UI integration ([a6c0be5](https://github.com/zur4ik/icomp/commit/a6c0be58fa3f8b4ffd42ebeb3a1b345e5609c381))
+* add support for CSS modules in TypeScript ([8f31263](https://github.com/zur4ik/icomp/commit/8f312639cb5d3f9f620381f36120be2a24ee80f7))
+* add SVG import and processing functionality ([7919319](https://github.com/zur4ik/icomp/commit/7919319e1ce769d53b35df455e21951a19bfdab9))
+* **icon:** add tooltip for non-generated icons ([740f166](https://github.com/zur4ik/icomp/commit/740f1661497efe8e8609610138eab203bf2acb1f))
+* **IconSection:** add tracking for state changes ([784b726](https://github.com/zur4ik/icomp/commit/784b726e73e73197c83efc4cae8945757a93e22e))
+* **modal:** add ref to track valid backdrop clicks ([10a1d14](https://github.com/zur4ik/icomp/commit/10a1d148544e95508fff2fee27b1936206c9fc88))
+* update tsconfig and refactor unused code ([973c3d1](https://github.com/zur4ik/icomp/commit/973c3d1469b6147ef1cb63893c8a0b888147c02d))
+
 ## [1.4.0](https://github.com/zur4ik/icomp/compare/v1.3.0...v1.4.0) (2025-04-05)
 
 ### Features
