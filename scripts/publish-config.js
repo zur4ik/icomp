@@ -17,5 +17,5 @@ if (target === "github") {
   }
 }
 
-fs.writeFileSync("package.json", JSON.stringify(pkg, null, 2))
+fs.writeFileSync("package.json", JSON.stringify(pkg, null, 2) + "\n")
 console.log(`package.json set for: ${target}`)
