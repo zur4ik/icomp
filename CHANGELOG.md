@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/zur4ik/icomp/compare/v1.6.0...v1.7.0) (2025-04-12)
+
+
+### Features
+
+* add support for publishing to GitHub and NPM ([76f0aea](https://github.com/zur4ik/icomp/commit/76f0aeabaabf255e7a5393ffa1efed845ce4f157))
+* add UI mode for icon generation ([2ad43c9](https://github.com/zur4ik/icomp/commit/2ad43c9aafc2bed48803e9b137d50e75eb838540))
+* **scripts:** update publish scripts for env usage ([652981a](https://github.com/zur4ik/icomp/commit/652981af6257837e1a54a698d0d7f4de9d89fea6))
+
+
+### Bug Fixes
+
+* append newline to `package.json` during write ([5810a46](https://github.com/zur4ik/icomp/commit/5810a46113d5e5a7ee731ca20d0dea78d6e00430))
+
 ## [1.6.0](https://github.com/zur4ik/icomp/compare/v1.5.1...v1.6.0) (2025-04-12)
 
 
