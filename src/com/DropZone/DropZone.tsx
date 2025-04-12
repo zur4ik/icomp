@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react"
-import { cleanFileName, cleanKeywords, validateSvg } from "@root/shared"
 import { useAppStore } from "@store/appStore"
 import { FILE_HANDLER_MODAL } from "@com/modals"
+import importFileHandler from "@services/importFileHandler"
 
 export function DropZone({ onDropFile }: { onDropFile: (file: File) => void }) {
   const [isDragging, setIsDragging] = useState(false)
@@ -26,24 +26,11 @@ export function DropZone({ onDropFile }: { onDropFile: (file: File) => void }) {
       dragCounter.current = 0
       setIsDragging(false)
       const file = e.dataTransfer?.files?.[0]
-      if (file && file.type === "image/svg+xml") {
-        const content = await file.text()
-        try {
-          // Validate the SVG content
-          validateSvg(content)
 
-          const name = cleanFileName(file.name.replace(/\.svg$/, ""))
-          const rawKeywords = content.match(/<desc>(.*?)<\/desc>/)?.[1] || ""
-          const keywords = cleanKeywords(rawKeywords)
-          // open file handler modal
-          openModal(FILE_HANDLER_MODAL, {
-            name: name,
-            keywords: keywords,
-            svg: content,
-          })
-        } catch (error) {
-          console.error("Invalid SVG file:", error)
-        }
+      const fileData = await importFileHandler(file)
+
+      if (fileData) {
+        openModal(FILE_HANDLER_MODAL, fileData)
       }
     }
 

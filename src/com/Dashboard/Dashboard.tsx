@@ -7,6 +7,7 @@ import GenerateButton from "@com/GenerateButton/GenerateButton"
 import { DropZone } from "@com/DropZone/DropZone"
 import Modals from "@com/modals/Modals"
 import { IconMascot } from "@com/icons"
+import ClipboardHandler from "@com/ClipboardHandler/ClipboardHandler"
 
 export const Dashboard: FC = () => {
   const size = 24
@@ -59,6 +60,7 @@ export const Dashboard: FC = () => {
         <GenerateButton />
       </aside>
       <DropZone onDropFile={() => {}} />
+      <ClipboardHandler />
       <Modals />
     </div>
   )
