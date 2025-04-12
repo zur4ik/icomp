@@ -21,7 +21,7 @@ export const Header: FC = () => {
         </a>
       </div>
 
-      <div>(tools)</div>
+      <div></div>
     </header>
   )
 }

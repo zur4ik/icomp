@@ -1,5 +1,5 @@
 {
-  "name": "icomp",
+  "name": "@zur4ik/icomp",
   "description": "A CLI tool for generating React components from SVG icons.",
   "private": false,
   "version": "1.5.1",
@@ -10,7 +10,9 @@
     "icomp": "dist/cli/cli.cjs"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/",
+    "name": "@zur4ik/icomp"
   },
   "repository": {
     "type": "git",

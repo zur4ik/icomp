@@ -6,6 +6,7 @@ import { IconInfoSection } from "@com/sections/IconInfoSection/IconInfoSection"
 import GenerateButton from "@com/GenerateButton/GenerateButton"
 import { DropZone } from "@com/DropZone/DropZone"
 import Modals from "@com/modals/Modals"
+import { IconMascot } from "@com/icons"
 
 export const Dashboard: FC = () => {
   const size = 24
@@ -28,14 +29,27 @@ export const Dashboard: FC = () => {
 
   return (
     <div className={"flex grow"}>
-      <main
-        className={"grid-cols-auto-60 grid grow content-start gap-10 p-10"}
-        onClick={deselectHandler}
-      >
-        {icons.map((icon) => (
-          <Icon icon={icon} size={size} key={icon.name} />
-        ))}
-      </main>
+      {icons.length === 0 && (
+        <div className={"flex w-full flex-col items-center justify-center"}>
+          <div className={"text-slate-600"}>
+            <IconMascot size={64} />
+          </div>
+          <h2 className={"mt-20 text-xl text-slate-600"}>You have not imported any icon yet</h2>
+          <h3 className={"text-md mt-5 text-slate-400"}>
+            Drag&Drop svg files here or paste them into input folder
+          </h3>
+        </div>
+      )}
+      {icons.length > 0 && (
+        <main
+          className={"grid-cols-auto-60 grid grow content-start gap-10 p-10"}
+          onClick={deselectHandler}
+        >
+          {icons.map((icon) => (
+            <Icon icon={icon} size={size} key={icon.name} />
+          ))}
+        </main>
+      )}
       <aside className={"mini-scroll flex w-300 flex-col border-l-1 border-l-gray-200"}>
         <div className={"panel-head"}>Properties</div>
         <div className={"h-0 min-h-200 shrink grow overflow-y-auto"}>
