@@ -27,3 +27,4 @@ out
 /.assets/
 /src/com/demo/
 /cli/.cache/
+/.env

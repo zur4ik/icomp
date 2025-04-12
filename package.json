@@ -1,5 +1,5 @@
 {
-  "name": "@zur4ik/icomp",
+  "name": "icomp",
   "description": "A CLI tool for generating React components from SVG icons.",
   "private": false,
   "version": "1.6.0",
@@ -8,11 +8,6 @@
   "type": "module",
   "bin": {
     "icomp": "dist/cli/cli.cjs"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com/",
-    "name": "@zur4ik/icomp"
   },
   "repository": {
     "type": "git",
@@ -47,7 +42,9 @@
     "pkg:test:(gen)": "icomp generate -i ./.assets -o ./src/com/demo",
     "pkg:test:(ui)": "icomp ui -i ./.assets -o ./src/com/demo",
     "version": "standard-version",
-    "wip:gen": "tsx --tsconfig ./tsconfig.cli.json ./cli/index.ts generate -i src/assets/img/icons -o src/com/icons -w"
+    "wip:gen": "tsx --tsconfig ./tsconfig.cli.json ./cli/index.ts generate -i src/assets/img/icons -o src/com/icons -w",
+    "prepare:publish:github": "PUBLISH_TARGET=github node scripts/publish-config.js && npm run cli:bld && npm run ui:bld && npm publish --dry-run",
+    "prepare:publish:npm": "PUBLISH_TARGET=npm node scripts/publish-config.js && npm run cli:bld && npm run ui:bld && npm publish --dry-run"
   },
   "dependencies": {
     "@svgr/core": "^8.1.0",
@@ -81,6 +78,7 @@
     "@typescript-eslint/eslint-plugin": "^8.29.0",
     "@typescript-eslint/parser": "^8.29.0",
     "@vitejs/plugin-react": "^4.0.0",
+    "dotenv-cli": "^8.0.0",
     "eslint": "^9.23.0",
     "eslint-plugin-prettier": "^5.2.5",
     "eslint-plugin-react": "^7.37.4",
