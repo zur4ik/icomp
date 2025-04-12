@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/zur4ik/icomp/compare/v1.5.1...v1.6.0) (2025-04-12)
+
+
+### Features
+
+* add `IconMascot` and improve icons and dashboard ([4a3593a](https://github.com/zur4ik/icomp/commit/4a3593a8477b99a140e61ba4126566a20ca7dd86))
+* add clipboard handling and refactor file imports ([53b7f46](https://github.com/zur4ik/icomp/commit/53b7f4670f806bc8ef4871279cf54b595a2c6ad4))
+
 ### [1.5.1](https://github.com/zur4ik/icomp/compare/v1.5.0...v1.5.1) (2025-04-11)
 
 ## [1.5.0](https://github.com/zur4ik/icomp/compare/v1.4.0...v1.5.0) (2025-04-11)

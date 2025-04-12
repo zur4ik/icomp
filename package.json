@@ -2,7 +2,7 @@
   "name": "@zur4ik/icomp",
   "description": "A CLI tool for generating React components from SVG icons.",
   "private": false,
-  "version": "1.5.1",
+  "version": "1.6.0",
   "author": "Zura Jijavadze",
   "license": "MIT",
   "type": "module",
