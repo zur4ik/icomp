@@ -44,7 +44,9 @@
     "version": "standard-version",
     "wip:gen": "tsx --tsconfig ./tsconfig.cli.json ./cli/index.ts generate -i src/assets/img/icons -o src/com/icons -w",
     "publish:github": "PUBLISH_TARGET=github node scripts/publish-config.js && npm run cli:bld && npm run ui:bld && dotenv -e .env -- npm publish",
-    "publish:npm": "PUBLISH_TARGET=npm node scripts/publish-config.js && npm run cli:bld && npm run ui:bld && dotenv -e .env -- npm publish"
+    "publish:npm": "PUBLISH_TARGET=npm node scripts/publish-config.js && npm run cli:bld && npm run ui:bld && dotenv -e .env -- npm publish",
+    "pages:dev": "vite --config docs/pages/vite.config.ts",
+    "pages:bld": "vite build --config docs/pages/vite.config.ts"
   },
   "dependencies": {
     "@svgr/core": "^8.1.0",

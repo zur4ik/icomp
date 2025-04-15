@@ -28,3 +28,4 @@ out
 /src/com/demo/
 /cli/.cache/
 /.env
+/gh-pages/
