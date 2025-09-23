@@ -24,7 +24,7 @@ A CLI and UI tool for developers to generate React functional Icon components fr
 - Option to generate single or multiple (selected) components
 - Lightweight and developer-friendly
 - Search through icons (from [`v1.8.0`](https://github.com/zur4ik/icomp/releases/tag/v1.8.0))
-- 
+
 
 ---
 
