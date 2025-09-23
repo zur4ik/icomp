@@ -1,4 +1,4 @@
-import { create, type StateCreator } from "zustand/index"
+import { create, type StateCreator } from "zustand"
 import { devtools } from "zustand/middleware"
 import { immer } from "zustand/middleware/immer"
 
