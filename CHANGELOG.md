@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/zur4ik/icomp/compare/v1.7.0...v1.8.0) (2025-09-23)
+
+
+### Features
+
+* add initial setup for React-based documentation site ([2bd5aee](https://github.com/zur4ik/icomp/commit/2bd5aeea19ac7f847dc42e3609f00de9bfcc209c))
+* add search functionality in `Header` and `Dashboard` ([7eafabc](https://github.com/zur4ik/icomp/commit/7eafabc3004ec300ecf272893372d0ecae06fa71))
+
 ## [1.7.0](https://github.com/zur4ik/icomp/compare/v1.6.0...v1.7.0) (2025-04-12)
 
 
