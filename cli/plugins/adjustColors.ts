@@ -15,6 +15,11 @@ export const adjustColors: CustomPlugin = {
             node.attributes.stroke = "currentColor"
           }
 
+          // deal with color attribute
+          if (node.attributes?.color) {
+            node.attributes.color = "currentColor"
+          }
+
           // deal with fill
           if (node.name === "svg") {
             // only parent svg elements

@@ -5,7 +5,12 @@ interface IconProps extends SVGProps<SVGSVGElement> {
   width?: number
   height?: number
 }
-const IconAlertTriangleSolid = ({ size = 24, width, height, ...props }: IconProps) => (
+const IconAlertTriangleSolid = ({
+  size = 24,
+  width,
+  height,
+  ...props
+}: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"

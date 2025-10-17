@@ -1,5 +1,5 @@
 {
-  "name": "@zur4ik/icomp",
+  "name": "icomp",
   "description": "A CLI tool for generating React components from SVG icons.",
   "private": false,
   "version": "1.8.1",
@@ -46,7 +46,9 @@
     "publish:github": "PUBLISH_TARGET=github node scripts/publish-config.js && npm run cli:bld && npm run ui:bld && dotenv -e .env -- npm publish",
     "publish:npm": "PUBLISH_TARGET=npm node scripts/publish-config.js && npm run cli:bld && npm run ui:bld && dotenv -e .env -- npm publish",
     "pages:dev": "vite --config docs/pages/vite.config.ts",
-    "pages:bld": "vite build --config docs/pages/vite.config.ts"
+    "pages:bld": "vite build --config docs/pages/vite.config.ts",
+    "target:npm": "PUBLISH_TARGET=npm node scripts/publish-config.js",
+    "target:github": "PUBLISH_TARGET=npm node scripts/publish-config.js"
   },
   "dependencies": {
     "@svgr/core": "^8.1.0",
@@ -94,10 +96,5 @@
     "typescript": "^5.2.0",
     "vite": "6.2.6",
     "vite-plugin-html": "^3.2.2"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com/",
-    "name": "@zur4ik/icomp"
   }
 }
