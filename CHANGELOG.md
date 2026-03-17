@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.0](https://github.com/zur4ik/icomp/compare/v1.8.0...v1.9.0) (2026-03-17)
+
+
+### Features
+
+* assign `currentColor` value to svg `color` attribute ([8eb68d8](https://github.com/zur4ik/icomp/commit/8eb68d81f7e430182323f22d5e679b707ce87ce4))
+* integrate `generateIndex` into icon generation flow ([121c61b](https://github.com/zur4ik/icomp/commit/121c61bce10384d55e1c2eefffa18552553bbbb5))
+
 ### [1.8.1](https://github.com/zur4ik/icomp/compare/v1.8.0...v1.8.1) (2025-10-17)
 
 ## [1.8.0](https://github.com/zur4ik/icomp/compare/v1.7.0...v1.8.0) (2025-09-23)
