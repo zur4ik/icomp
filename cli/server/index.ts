@@ -8,6 +8,7 @@ import { getIconInfo } from "./services/getIconInfo"
 import generateIcons from "./services/generateIcons"
 import { saveIcons } from "./services/saveIcons"
 import { removeIcon } from "./services/removeIcon"
+import { generateIndex } from "@services/indexGenerator"
 
 export function startServer(inputPath: string, outputPath: string, port: number) {
   const app = express()
@@ -93,6 +94,7 @@ export function startServer(inputPath: string, outputPath: string, port: number)
     try {
       // Call the function to generate icons
       await saveIcons(inputPath, outputPath, files)
+      generateIndex(outputPath)
       res.status(200).json({ message: "Icons generated successfully" })
     } catch (error) {
       console.error("Error generating icons:", error)
