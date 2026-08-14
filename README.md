@@ -2,6 +2,8 @@
 
 A CLI and UI tool for developers to generate React functional Icon components from SVG files.
 
+🔗 [zur4ik.github.io/icomp](https://zur4ik.github.io/icomp/)
+
 ---
 [![Version](http://img.shields.io/npm/v/icomp.svg)](https://www.npmjs.org/package/icomp)
 [![Size](https://img.shields.io/npm/unpacked-size/icomp)](https://www.npmjs.org/package/icomp)
