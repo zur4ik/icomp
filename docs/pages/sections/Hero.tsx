@@ -57,7 +57,7 @@ const Hero = () => (
   <section id="top" className="mx-auto max-w-5xl px-6 pt-16 pb-20 sm:pt-24">
     <p className="mono-tag text-select mb-4">format: svg → react.tsx</p>
     <h1 className="font-display max-w-3xl text-4xl leading-[1.05] font-semibold tracking-tight sm:text-6xl">
-      Point it at a folder of SVGs.
+      Give it at a folder of SVGs.
       <br />
       Walk away with React icons.
     </h1>

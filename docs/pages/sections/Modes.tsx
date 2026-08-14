@@ -14,7 +14,7 @@ const Modes = () => {
     <section id="modes" className="mx-auto max-w-5xl px-6 py-20">
       <p className="mono-tag text-select mb-2">two ways to work</p>
       <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-        Automate it, or drive it by hxand
+        Automate it, or drive it by hand
       </h2>
 
       <div className="border-ink mt-8 flex border-b">
