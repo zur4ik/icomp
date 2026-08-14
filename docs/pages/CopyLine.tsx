@@ -14,7 +14,7 @@ const CopyLine = ({ command }: { command: string }) => {
       onClick={copy}
       className="group border-ink bg-surface hover:bg-select-soft flex w-full items-center justify-between gap-4 border px-4 py-3 text-left transition-colors"
     >
-      <span className="text-ink font-mono text-[13px]">
+      <span className="text-ink overflow-x-auto font-mono text-[13px] whitespace-nowrap">
         <span className="text-muted">$</span> {command}
       </span>
       <span className="mono-tag text-muted group-hover:text-select shrink-0">
