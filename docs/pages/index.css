@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-paper: #f5f6f3;
+  --color-surface: #ffffff;
+  --color-ink: #12161a;
+  --color-muted: #5b6570;
+  --color-line: #d9dfe1;
+  --color-accent: #ff5a3c;
+  --color-accent-soft: #ffe4dc;
+  --color-select: #2f6fed;
+  --color-select-soft: #e3ecfd;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+html {
+  background: var(--color-paper);
+}
+
+body {
+  @apply font-body select-none;
+  color: var(--color-ink);
+  background:
+    linear-gradient(var(--color-line) 1px, transparent 1px) 0 0 / 32px 32px,
+    linear-gradient(90deg, var(--color-line) 1px, transparent 1px) 0 0 /
+      32px 32px,
+    var(--color-paper);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: var(--color-select-soft);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-select);
+  outline-offset: 2px;
+}
+
+.artboard {
+  position: relative;
+  border: 1px solid var(--color-ink);
+  background: var(--color-surface);
+}
+
+.artboard::before,
+.artboard::after,
+.artboard .tick-tl,
+.artboard .tick-br {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  color: var(--color-muted);
+  pointer-events: none;
+}
+
+.artboard .tick-tl {
+  top: -18px;
+  left: -1px;
+}
+
+.artboard .tick-br {
+  bottom: -18px;
+  right: -1px;
+}
+
+.mono-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.marching-ants {
+  stroke-dasharray: 6 6;
+  animation: march 0.6s linear infinite;
+}
+
+@keyframes march {
+  to {
+    stroke-dashoffset: -12;
+  }
+}
+
+.inspector-row {
+  display: grid;
+  grid-template-columns: minmax(140px, 200px) 1fr;
+  border-bottom: 1px solid var(--color-line);
+  transition: background-color 0.15s ease;
+}
+
+.inspector-row:hover {
+  background: var(--color-select-soft);
+}
+
+.inspector-row:last-child {
+  border-bottom: none;
+}
+
+.fade-up {
+  animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.icon-tile {
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.icon-tile:hover {
+  border-color: var(--color-ink);
+  background: var(--color-select-soft);
+}
+
+.icon-tile:hover .icon-tile-name {
+  color: var(--color-select);
+}
